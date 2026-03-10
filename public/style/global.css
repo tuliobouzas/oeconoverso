@@ -111,7 +111,7 @@ body {
           top: 0;
           left: 0;
           height: 100vh;
-          width: 250px;
+          width: 300px;
           background: var(--drawer-bg-color) !important;
           padding-top: 70px;                                    /* space for burger */
           flex-direction: column;
@@ -144,6 +144,21 @@ body {
         }
         #menu-toggle:checked + .burger span:nth-child(3) {
           transform: translateY(calc(-1 * var(--burger-size) / 2)) rotate(-45deg);
+        }
+
+        /* Container for the coin logo in the menubar */
+        .menu-logo-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 30px;
+          margin-top: -10px; /* Adjust if needed to position relative to burger */
+        }
+
+        .menu-coin {
+          width: 80%;
+          height: auto;
+          /* Add subtle animation if desired, or keep it static */
         }
         
         /* links of the menubar */

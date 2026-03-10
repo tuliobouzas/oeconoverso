@@ -2,7 +2,7 @@
 title: "Conceito Econopédia"
 date: 2026-03-10T10:00:00-03:00
 description: "Um exemplo de termo para a Econopédia."
-image: "/img/preview.webp"
+image: "img/preview.webp"
 draft: false
 ---
 

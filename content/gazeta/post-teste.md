@@ -2,7 +2,7 @@
 title: "Manchete de Teste da Gazeta"
 date: 2026-03-10T10:00:00-03:00
 description: "Um exemplo de postagem para a seção Gazeta."
-image: "/img/preview.webp"
+image: "img/preview.webp"
 draft: false
 ---
 

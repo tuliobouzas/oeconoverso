@@ -61,6 +61,9 @@
             </button>
 
             <div id="my-links">
+                <div class="menu-logo-container">
+                    <img src="{{ "img/moeda.webp" | relURL }}" alt="Moeda" class="menu-coin">
+                </div>
 
                 {{ $links := slice
                     (dict "href" site.Home.Permalink "label" "Primeira página" "active" (eq .RelPermalink site.Home.RelPermalink))

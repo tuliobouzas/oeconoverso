@@ -16,7 +16,7 @@
             
             {{ if .Params.image }}
             <a href="{{ .RelPermalink }}">
-                <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem;">
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem;">
             </a>
             {{ end }}
 
