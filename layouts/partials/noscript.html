@@ -4,25 +4,25 @@
 <meta charset="UTF-8" />
 
 <!-- My custom theme -->
-<link rel="stylesheet" href="{{ "style/global.css" | relURL }}">
+<link rel="stylesheet" href="{{ "style/global.css" | absURL }}">
 
 </head>
 
 <body>
     <div class="noscript-overlay"> 
     <div class="main" style="padding-top:200px">
-        <img class="profile" src="{{ "img/noscript.avif" | relURL }}" alt="No Script">
+        <img class="profile" src="{{ "img/noscript.avif" | absURL }}" alt="No Script">
         <div class="info-home">
             <h1>This website requires JavaScript to function properly.</h1><br/>
             <p>Please enable JavaScript in your browser settings. <br/><br/><br/>
-            You can still access my <a href="{{ "files/cv.pdf" | relURL }}">Curricum Vitae</a>
+            You can still access my <a href="{{ "files/cv.pdf" | absURL }}">Curricum Vitae</a>
             or <a href="mailto:t.bouzas@tilburguniversity.edu">send me an e-mail</a>. </p>
         </div>
     </div>
     <div class="footer-bar">
         <!-- horizontal line -->
         <div></div>
-        <div><img src="{{ "icons/noscript-logo.avif" | relURL }}" style="height:100px"></div> 
+        <div><img src="{{ "icons/noscript-logo.avif" | absURL }}" style="height:100px"></div> 
         <div></div>
     </div>
     </div>

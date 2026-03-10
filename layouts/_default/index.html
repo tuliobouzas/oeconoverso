@@ -6,7 +6,7 @@
         <div class="manchete-meta">Gazeta | {{ .Date.Format "02 de Janeiro de 2006" }}</div>
         <h1><a href="{{ .RelPermalink }}" style="color: inherit; text-decoration: none;">{{ .Title }}</a></h1>
         
-        {{ $image := .Params.image | default "img/preview.webp" | relURL }}
+        {{ $image := .Params.image | default "img/preview.webp" | absURL }}
         <a href="{{ .RelPermalink }}"><img src="{{ $image }}" alt="{{ .Title }}" style="width: 100%; height: auto; margin-bottom: 20px;"></a>
         
         <div class="summary-wrapper">
@@ -27,7 +27,7 @@
         <h2><a href="{{ .RelPermalink }}" style="color: inherit; text-decoration: none;">{{ .Title }}</a></h2>
         
         {{ if .Params.image }}
-        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
         {{ end }}
 
         <div class="summary-wrapper">

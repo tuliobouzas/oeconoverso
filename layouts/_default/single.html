@@ -9,7 +9,7 @@
         </div>
         
         {{ if .Params.image }}
-        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem;">
+        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem;">
         {{ end }}
 
         <div class="content">
