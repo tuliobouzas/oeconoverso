@@ -8,7 +8,7 @@
     <title>{{ .Title }}</title>
 
     <!-- Page icon -->
-    <link rel="icon" type="image/png" href="/icons/icon.webp" />
+    <link rel="icon" type="image/png" href="{{ "icons/icon.webp" | relURL }}" />
 
     <!-- Metadata -->
     <meta name="description" content="{{ .Params.description }}">
@@ -20,24 +20,24 @@
     <meta property="og:description" content="{{ .Params.description }}">
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ .Permalink }}" />
-    <meta property="og:image" content="https://tuliobouzas.github.io/img/preview.webp">
+    <meta property="og:image" content="{{ "img/preview.webp" | absURL }}">
 
     <!-- Twitter Card metadata -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ .Title }}" />
     <meta name="twitter:description" content="{{.Params.description }}" />
-    <meta name="twitter:image" content="https://tuliobouzas.github.io/img/preview.webp" />
+    <meta name="twitter:image" content="{{ "img/preview.webp" | absURL }}" />
 
     <!-- Script for the toggle menu -->
-    <script src="/js/toggle-menu.js" ></script>
+    <script src="{{ "js/toggle-menu.js" | relURL }}" ></script>
     <!-- Script for theme toggle -->
-    <script src="/js/theme-toggle.js" ></script>
+    <script src="{{ "js/theme-toggle.js" | relURL }}" ></script>
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="{{ "style/global.css" | relURL }}">
 
     <!-- Markdown Stylesheet -->
-    <link rel="stylesheet" href="/style/markdown.css">
+    <link rel="stylesheet" href="{{ "style/markdown.css" | relURL }}">
 
 </head> 
 
@@ -63,11 +63,11 @@
             <div id="my-links">
 
                 {{ $links := slice
-                    (dict "href" "/" "label" "Primeira página" "active" (eq .RelPermalink "/"))
-                    (dict "href" "/gazeta/" "label" "Gazeta" "active" (in .RelPermalink "/gazeta/"))
-                    (dict "href" "/econopedia/" "label" "Econopédia" "active" (in .RelPermalink "/econopedia/"))
-                    (dict "href" "/arquivo/" "label" "Arquivo" "active" (eq .RelPermalink "/arquivo/"))
-                    (dict "href" "/sobre/" "label" "Sobre" "active" (eq .RelPermalink "/sobre/"))
+                    (dict "href" ("/" | relURL) "label" "Primeira página" "active" (eq .RelPermalink ("/" | relURL)))
+                    (dict "href" ("/gazeta/" | relURL) "label" "Gazeta" "active" (in .RelPermalink "/gazeta/"))
+                    (dict "href" ("/econopedia/" | relURL) "label" "Econopédia" "active" (in .RelPermalink "/econopedia/"))
+                    (dict "href" ("/arquivo/" | relURL) "label" "Arquivo" "active" (eq .RelPermalink ("/arquivo/" | relURL)))
+                    (dict "href" ("/sobre/" | relURL) "label" "Sobre" "active" (eq .RelPermalink ("/sobre/" | relURL)))
                 }}
             
                 {{ range $links }}
@@ -79,7 +79,7 @@
             </div>
 
             <div class="title">
-                <img src="/img/oeconoverso.svg" alt="O Econoverso" class="title-logo">
+                <img src="{{ "img/oeconoverso.svg" | relURL }}" alt="O Econoverso" class="title-logo">
             </div>
         </div>
 
