@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gazeta</title>
+
+    
+    <link rel="icon" type="image/png" href="/icons/icon.webp" />
+
+    
+    <meta name="description" content="Crônicas e notícias do Econoverso.">
+    <link rel="canonical" href="http://localhost:1313/gazeta/" />
+    <meta name="language" content="en" />
+
+    
+    <meta property="og:title" content="Gazeta" />
+    <meta property="og:description" content="Crônicas e notícias do Econoverso.">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:1313/gazeta/" />
+    <meta property="og:image" content="https://tuliobouzas.github.io/img/preview.webp">
+
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gazeta" />
+    <meta name="twitter:description" content="Crônicas e notícias do Econoverso." />
+    <meta name="twitter:image" content="https://tuliobouzas.github.io/img/preview.webp" />
+
+    
+    <script src="/js/toggle-menu.js" ></script>
+    
+    <script src="/js/theme-toggle.js" ></script>
+    
+    
+    <link rel="stylesheet" href="/style/global.css">
+
+    
+    <link rel="stylesheet" href="/style/markdown.css">
+
+</head> 
+
+<body>
+    <div class="top-container">
+        <div class="header">
+            
+            
+            <input type="checkbox" id="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                <svg id="theme-icon" viewBox="0 0 24 24">
+                    
+                </svg>
+            </button>
+
+            <div id="my-links">
+
+                
+            
+                
+                    <a href="/" class="menubar-link">
+                        <span class="label">Primeira página</span>
+                    </a>
+                
+                    <a href="/gazeta/" class="menubar-link menubar-active">
+                        <span class="label">Gazeta</span>
+                    </a>
+                
+                    <a href="/econopedia/" class="menubar-link">
+                        <span class="label">Econopédia</span>
+                    </a>
+                
+                    <a href="/arquivo/" class="menubar-link">
+                        <span class="label">Arquivo</span>
+                    </a>
+                
+                    <a href="/sobre/" class="menubar-link">
+                        <span class="label">Sobre</span>
+                    </a>
+                
+                
+            </div>
+
+            <div class="title">
+                <img src="/img/oeconoverso.svg" alt="O Econoverso" class="title-logo">
+            </div>
+        </div>
+
+        <div class="newspaper-bar">
+            <div class="newspaper-line-top"></div>
+            <div class="newspaper-date" id="newspaper-date"></div>
+            <div class="newspaper-line-bottom"></div>
+        </div>
+    </div>
+    <script>
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let dateStr = new Date().toLocaleDateString('pt-BR', dateOptions);
+        document.getElementById('newspaper-date').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+    </script>
+
+    <div class="page-wrap">
+        <div class="main">
+            
+<div class="info">
+    <h1 style="text-align: center; margin-bottom: 3rem;">Gazeta</h1>
+    
+    <p>Aqui você encontra as últimas postagens da Gazeta.</p>
+
+
+    <div style="margin-top: 3rem;">
+        
+        <article style="margin-bottom: 4rem; border-bottom: 1px solid var(--theme-color); padding-bottom: 2rem;">
+            <div style="text-transform: uppercase; color: var(--theme-color-dark); font-size: 12px; letter-spacing: 1px; margin-bottom: 5px;">
+                10 de Janeiro de 2026
+            </div>
+            <h2 style="margin-top: 0;">
+                <a href="/gazeta/post-teste/" style="text-decoration: none; color: var(--body-color); font-weight: bold;">Manchete de Teste da Gazeta</a>
+            </h2>
+            
+            
+            <a href="/gazeta/post-teste/">
+                <img src="/img/preview.webp" alt="Manchete de Teste da Gazeta" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem;">
+            </a>
+            
+
+            <div style="margin-bottom: 1.5rem;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.</p>
+            </div>
+            
+            <a href="/gazeta/post-teste/" class="read-more-btn">Leia o artigo completo</a>
+        </article>
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <div id="footer-placeholder">
+        
+<link rel="stylesheet" href="/style/global.css">
+
+<style> 
+    a {
+        text-decoration: none;
+    }
+
+    .footer-line {
+        height: 2px;
+        border: var(--menubar-color);
+        background-color: var(--menubar-color);
+        margin-top: 9px;
+    }
+
+</style>
+ 
+
+<div class="newspaper-bar" style="margin-top: 60px; margin-bottom: 20px;">
+    <div class="newspaper-line-top"></div>
+</div>
+
+<footer class="footer">
+    
+    
+    <div class="footer-bar">
+        
+        
+        <div><hr text-align="center" class="footer-line" width="100%" style="color: var(--menubar-color)"></div>
+
+        
+        <div >
+        
+        <a href="mailto:t.bouzas@tilburguniversity.edu">
+            <img src="/icons/email.svg" alt="E-mail" >
+        </a>
+        
+        
+        <a href="https://twitter.com/TulioBouzas">
+            <img src="/icons/x.svg" alt="X" >
+        </a>
+
+        
+        <a href="https://github.com/tuliobouzas/">
+            <img src="/icons/github.svg" alt="GitHub" >
+        </a>
+
+        
+        <a href="https://nl.linkedin.com/in/tcsbouzas">
+            <img src="/icons/linkedin.svg" alt="LinkedIn" >
+        </a>
+
+        
+        <a href="https://scholar.google.com/citations?user=GziUunwAAAAJ&hl=pt-BR&oi=ao">
+            <img src="/icons/scholar.svg" alt="Google Scholar" >
+        </a>
+        </div>
+        
+        
+        <div><hr text-align="center" class="footer-line" width="100%" style="color: var(--menubar-color)"></div>
+    </div>
+    
+    
+    <div style="text-align: center; color: var(--menubar-color); padding-top: 10px; padding-bottom: 5px;">
+        <p>© 2026 O Econoverso</p>
+    </div>
+</footer>
+
+
+<div class="newspaper-bar" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="newspaper-line-bottom"></div>
+</div>   
+
+    </div>
+
+</body>
+</html>

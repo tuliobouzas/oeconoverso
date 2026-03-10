@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ .Title }}</title>
+
+    <!-- Page icon -->
+    <link rel="icon" type="image/png" href="/icons/icon.webp" />
+
+    <!-- Metadata -->
+    <meta name="description" content="{{ .Params.description }}">
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta name="language" content="en" />
+
+    <!-- Metadata for social media -->
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:description" content="{{ .Params.description }}">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:image" content="https://tuliobouzas.github.io/img/preview.webp">
+
+    <!-- Twitter Card metadata -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ .Title }}" />
+    <meta name="twitter:description" content="{{.Params.description }}" />
+    <meta name="twitter:image" content="https://tuliobouzas.github.io/img/preview.webp" />
+
+    <!-- Script for the toggle menu -->
+    <script src="/js/toggle-menu.js" ></script>
+    <!-- Script for theme toggle -->
+    <script src="/js/theme-toggle.js" ></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style/global.css">
+
+    <!-- Markdown Stylesheet -->
+    <link rel="stylesheet" href="/style/markdown.css">
+
+</head> 
+
+<body>
+    <div class="top-container">
+        <div class="header">
+            
+            <!-- Menu -->
+            <input type="checkbox" id="menu-toggle" hidden>
+            <label for="menu-toggle" class="burger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Theme Toggle -->
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                <svg id="theme-icon" viewBox="0 0 24 24">
+                    <!-- Icon will be inserted by JS -->
+                </svg>
+            </button>
+
+            <div id="my-links">
+
+                {{ $links := slice
+                    (dict "href" "/" "label" "Primeira página" "active" (eq .RelPermalink "/"))
+                    (dict "href" "/gazeta/" "label" "Gazeta" "active" (in .RelPermalink "/gazeta/"))
+                    (dict "href" "/econopedia/" "label" "Econopédia" "active" (in .RelPermalink "/econopedia/"))
+                    (dict "href" "/arquivo/" "label" "Arquivo" "active" (eq .RelPermalink "/arquivo/"))
+                    (dict "href" "/sobre/" "label" "Sobre" "active" (eq .RelPermalink "/sobre/"))
+                }}
+            
+                {{ range $links }}
+                    <a href="{{ .href }}" class="menubar-link{{ if .active }} menubar-active{{ end }}">
+                        <span class="label">{{ .label }}</span>
+                    </a>
+                {{ end }}
+                
+            </div>
+
+            <div class="title">
+                <img src="/img/oeconoverso.svg" alt="O Econoverso" class="title-logo">
+            </div>
+        </div>
+
+        <div class="newspaper-bar">
+            <div class="newspaper-line-top"></div>
+            <div class="newspaper-date" id="newspaper-date"></div>
+            <div class="newspaper-line-bottom"></div>
+        </div>
+    </div>
+    <script>
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let dateStr = new Date().toLocaleDateString('pt-BR', dateOptions);
+        document.getElementById('newspaper-date').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+    </script>
+
+    <div class="page-wrap">
+        <div class="main">
+            {{ block "main" . }}{{ end }}
+        </div>
+    </div>
+
+    <div id="footer-placeholder">
+        {{ partial "footer.html" . }}
+    </div>
+
+</body>
+</html>

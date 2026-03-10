@@ -1,0 +1,19 @@
+<!-- Details and Links -->
+<div class="research-links"> 
+    
+    <!-- Abstract -->
+    <details class="research-links"> 
+        <summary style="text-decoration: none; list-style: none;">Abstract</summary> 
+    {{ .Get "abstract" }} 
+    </details>
+    {{ if .Get "supplement" }}|<details class="research-links"> 
+        <summary style="text-decoration: none; list-style: none;">Supplementary Materials</summary>
+    {{ .Get "supplement" | markdownify }} 
+    </details>| {{end}}
+
+    <!-- Links -->
+    {{ if not (eq (.Get "draft") "true") }}
+        | {{ .Inner}}
+    {{end}}
+
+</div>

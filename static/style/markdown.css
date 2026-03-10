@@ -1,0 +1,48 @@
+.info, .info-home {
+
+    a {
+        color: var(--link-color);
+    }
+    
+    em { 
+        font-size: 28px; 
+        font-style: normal; 
+        font-family: var(--title-font) ;
+        color: var(--body-color); 
+    } 
+    
+    h2,h3,h4,h5,h6 {
+        font-style: normal; 
+        font-family: var(--title-font) ;
+        color: var(--theme-color-dark);
+    }
+
+    h1 {
+        color: var(--body-color);
+        text-align: center;
+        
+    }
+    
+    details > summary {
+        cursor: pointer;
+        color: var(--link-color); 
+        text-decoration: underline;
+        list-style:  none; 
+    } 
+    
+    /* research links behavior */
+    .research-links { 
+        display: inline-block; 
+        vertical-align: middle;            /* in-line      */
+        margin-right: 10px; 
+    }
+    
+    /* style lines */
+    .solid {
+        color: var(--theme-color-dark);
+        background: var(--theme-color-dark);
+        border: var(--theme-color-dark);
+        height: 2px;
+    }
+}
+

@@ -1,0 +1,544 @@
+/** GLOBAL THEME **/
+
+:root {
+    --body-font: 'Georgia', serif;
+    --body-font-size: 20px;
+    --title-font: Georgia;
+    --body-color: #313131;
+    --bg-color: rgba(250,247,242,1);
+    --drawer-bg-color: #333333;
+    --drawer-link-color: white;
+    --link-color: rgb(68, 125, 190); 
+    --theme-color: rgb(164, 178, 161); /*rgb(166, 177, 166)*/
+    --theme-color-dark: rgb(111, 146, 135);
+    --light-color: rgba(239,234,222,1);
+    --money-color-dark: rgba(89,106,81);
+    --menubar-color: rgb(60,58,56); /* rgba(83, 81, 77); */
+    --burger-size: 30px;
+    --burger-thickness: 3px;
+    --header-padding: 25px;
+    --side-padding: 100px;
+    --svg-filter: none;
+    --icon-filter: invert(21%) sepia(2%) saturate(1113%) hue-rotate(338deg) brightness(97%) contrast(85%); /* Exact #3C3A38 */
+}
+
+body.dark-mode {
+    --body-color: #e0e0e0;
+    --bg-color: #121212;
+    --drawer-bg-color: #e0e0e0;
+    --drawer-link-color: #121212;
+    --link-color: rgb(110, 168, 230);
+    --theme-color: rgb(111, 146, 135);
+    --theme-color-dark: rgb(164, 178, 161);
+    --menubar-color: #e0e0e0;
+    --svg-filter: invert(1);
+    --icon-filter: invert(99%) sepia(0%) saturate(1141%) hue-rotate(349deg) brightness(114%) contrast(76%); /* Exact #e0e0e0 */
+}
+
+
+/* Whole document */
+html { 
+  height: 100%; 
+  background-color: var(--menubar-color);                  /* color for overscrolling above */
+}
+
+
+/* BODY OF THE DOCUMENT */
+body { 
+  font-family: var(--body-font); 
+  font-size: var(--body-font-size);          
+  letter-spacing: 0.5px; 
+  margin: 0; 
+  padding: 0;                  
+  min-height: 100vh; /* 100% */ 
+  display: flex; 
+  flex-direction: column;
+  background: var(--bg-color);
+  color: var(--body-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+
+    /* Page wrap */
+    .page-wrap {
+        padding-bottom: 60px;
+        margin-top: 180px; /* Espaço para o cabeçalho fixo */
+      }    
+
+    .top-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        z-index: 1000;
+        transition: background 0.3s;
+    }
+    
+    /* cover */
+    .header { 
+      height: auto; 
+      width: 100%; 
+      position: relative;
+    }                                             
+
+    /* burger menu button */
+    .burger {
+      position: absolute;
+      top: 15px;
+      left: 15px; /* Pinned exactly to the left */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: var(--burger-size);
+      height: var(--burger-size);
+      cursor: pointer;
+      z-index: 3100; /* Maior que o z-index do #my-links */
+      transition: all 0.25s;
+    }
+
+        .burger span {
+          display: block; /* Ensure spans render correctly inside flex column */
+          width: 100%;
+          height: var(--burger-thickness);
+          background-color: var(--menubar-color);
+          transition: all 0.25s;
+        }
+    
+        #my-links {
+          display: flex;                                        /* display flex so it can animate    */ 
+          position: fixed;
+          top: 0;
+          left: 0;
+          height: 100vh;
+          width: 250px;
+          background: var(--drawer-bg-color) !important;
+          padding-top: 70px;                                    /* space for burger */
+          flex-direction: column;
+          box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+          z-index: 2050;
+          transform: translateX(-100%);                         /* Start hidden to the left */
+          transition: transform 0.3s ease-in-out, background 0.3s;
+        } 
+
+        /* when the checkbox is checked, slide the menu in */
+        #menu-toggle:checked ~ #my-links {
+          transform: translateX(0);
+          z-index: 3000; /* Garante que fique acima de tudo */
+        }
+
+        /* animating the burger menu button */
+        #menu-toggle:checked + .burger {
+          transform: rotate(360deg);
+        }
+      
+        #menu-toggle:checked + .burger span {
+          background-color: var(--drawer-link-color);
+        }
+      
+        #menu-toggle:checked + .burger span:nth-child(1) {
+          transform: translateY(calc(var(--burger-size) / 2 - var(--burger-thickness))) rotate(45deg);
+        }
+        #menu-toggle:checked + .burger span:nth-child(2) {
+          opacity: 0;
+        }
+        #menu-toggle:checked + .burger span:nth-child(3) {
+          transform: translateY(calc(-1 * var(--burger-size) / 2)) rotate(-45deg);
+        }
+        
+        /* links of the menubar */
+        .menubar-link { 
+          text-decoration: none;
+          text-align: left; 
+          color: var(--drawer-link-color);
+          font-size: 24px;
+          padding: 15px 25px; 
+          display: block;                                         
+          position: relative;
+          cursor: pointer;
+          transition: color 0.3s;
+        }  
+        
+        /* underline for hovered button */
+        .label{
+          position: relative;
+          display: inline-block;
+        }
+
+        .label::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          background : var(--theme-color);
+          left: 50%;
+          height: 5px;
+          bottom: -7px;
+          transition: all .2s;
+          opacity: 1;
+        }
+
+        .label:hover::before {
+          width: calc(100% + 20px);
+          left: -10px;
+        }
+
+        /* indicator of current section */
+        .menubar-link.menubar-active { 
+          color: var(--theme-color);
+          font-weight: bold;
+        }
+
+    /* theme toggle button */
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 2100;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .theme-toggle svg {
+        width: 24px;
+        height: 24px;
+        fill: var(--menubar-color);
+        transition: fill 0.3s;
+    }
+
+    /* newspaper date bar */
+    .newspaper-bar {
+      width: calc(100% - var(--side-padding)); 
+      margin: 0 auto 15px auto;
+      text-align: center;
+    }
+
+    .newspaper-line-top {
+      border-top: 3px solid var(--body-color);
+      border-bottom: 1px solid var(--body-color);
+      height: 3px; 
+      margin-bottom: 4px;
+    }
+
+    .newspaper-line-bottom {
+      border-top: 1px solid var(--body-color);
+      border-bottom: 3px solid var(--body-color);
+      height: 3px; 
+      margin-top: 4px;
+    }
+
+    .newspaper-date {
+      font-family: var(--title-font);
+      color: var(--body-color);
+      font-size: 14px;
+    }   
+
+    /* title of the page */
+    .title { 
+      padding-top: var(--header-padding);
+      padding-bottom: var(--header-padding);
+      text-align: center; 
+    }   
+    
+    .title-logo {
+        max-width: 525px;
+        width: 90%;
+        height: auto;
+        filter: var(--svg-filter);
+        transition: filter 0.3s;
+    }
+
+    /* main block */
+    .main { 
+      padding-top: 40px;                                                    
+      min-height: 52vh;
+      box-sizing: border-box; 
+      flex-wrap: wrap; 
+      flex-grow: 1;
+      margin: auto; 
+      margin-right: auto; 
+    }                                 
+
+        /* textual block */
+        .info { 
+          margin-top: 10px; 
+          text-align: justify; 
+          width: 90%;
+          max-width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+          line-height: 1.6;
+        }               
+
+    /* footer */
+    .footer { 
+      padding-top: 32px; 
+      margin-top:0px;                                      
+      background: transparent;                                    
+      position: relative;
+      height: 120px ; 
+      width: 100%; 
+      overflow: hidden;                     
+      color: var(--light-color); 
+      font-size: var(--body-font-size); 
+    }     
+              
+        .footer::after {
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 300px;                                      /* not too big! just enough for bounce */
+          background: transparent;
+          pointer-events: none;
+        }
+
+        /* footer bar */
+        .footer-bar { 
+          width: calc(100% - var(--side-padding)); 
+          text-align: center; 
+          margin: auto;
+          display: grid; 
+          grid-template-columns: 1fr 370px 1fr; 
+        }
+
+        /* footer bar icons */        
+        .footer-bar a img { 
+          margin: 10px;
+          margin-top: -8px; 
+          text-align: center;                        
+          width: 40px; 
+          height: auto; 
+          display: inline-block;
+          fill: var(--light-color);
+          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          will-change: transform; 
+          filter: brightness(0) var(--icon-filter);
+        }
+
+        /* animation for social network icons */
+        .footer-bar a:hover img {
+          transform: scale(1.4) translateY(-3px);
+        }
+
+     
+    /* markdown font */
+    .markdown-font { 
+      font-family: var(--body-font);
+      color: var(--body-color); 
+      font-size: var(--body-font-size); 
+    }
+
+/* Links */
+a { 
+  color: var(--link-color); 
+  text-decoration: underline;
+ }
+
+iframe {
+  overflow: hidden;
+  border: none;
+}
+
+/* Home Grid Layout */
+.home-grid {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 40px;
+    width: calc(100% - var(--side-padding));
+    margin: 0 auto;
+    align-items: start;
+}
+
+/* Manchete Style */
+.manchete {
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    height: 80vh; /* Altura total fixa para as duas colunas */
+}
+
+.manchete h1 {
+    font-family: var(--title-font);
+    font-size: 48px;
+    margin-top: 0;
+    line-height: 1.1;
+    text-align: left;
+    min-height: 110px; /* Garante que títulos de 1 ou 2 linhas ocupem o mesmo espaço */
+}
+
+.manchete-meta {
+    font-size: 24px;
+    color: var(--theme-color-dark);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.manchete img, .econopedia-box img {
+    width: 100%;
+    height: 250px; /* Altura fixa para as imagens para garantir alinhamento */
+    object-fit: cover; /* Corta a imagem sem distorcer */
+    margin-bottom: 20px;
+}
+
+/* Summary Fade-out Effect */
+.summary-wrapper {
+    position: relative;
+    flex-grow: 1; /* Ocupa todo o espaço restante */
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.summary-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, var(--bg-color));
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.read-more-btn {
+    background: var(--body-color);
+    color: var(--bg-color);
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: var(--body-font-size);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.3s;
+    display: inline-block;
+}
+
+.read-more-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Econopédia Box Style */
+.econopedia-box {
+    border: 2px solid var(--body-color);
+    border-radius: 15px;
+    padding: 25px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 80vh; /* Mesma altura da manchete */
+    box-sizing: border-box;
+}
+
+.econopedia-box h2 {
+    font-family: var(--title-font);
+    font-size: 28px;
+    margin-top: 0;
+    border-bottom: 1px solid var(--body-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    min-height: 80px;
+}
+
+
+/* MEDIA QUERIES */
+
+/* Mobile page */
+@media (max-width: 800px) {
+    
+    .home-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .manchete {
+        padding-right: 0;
+        border-bottom: 1px solid var(--body-color);
+        padding-bottom: 40px;
+        height: auto; /* Deixa crescer no mobile */
+    }
+
+    .econopedia-box {
+        height: auto; /* Deixa crescer no mobile */
+    }
+
+    .manchete h1 {
+        font-size: 32px;
+        min-height: auto;
+    }
+
+    .header {
+      flex: 1 auto; 
+      height: auto;
+    }
+
+    .title {
+      padding-top: var(--header-padding);
+    }
+
+    .title-logo {
+      max-width: 300px;
+    }
+
+    .main{ 
+      width: 90%; 
+      flex-direction: column; 
+      min-height: 52vh; 
+    }  
+
+    .page-wrap {
+      margin-top: 140px;
+    }
+
+    .footer-bar { 
+      width: calc(100% - var(--side-padding)); 
+      grid-template-columns: 1fr 250px 1fr;
+    }
+
+    .footer-bar a img { 
+      margin: 5px;
+      margin-top: -3px; 
+      width: 30px; 
+    }
+
+    :root {
+      --body-font-size: 16px;
+    }
+
+  }
+
+  /* Tablet screens */
+  @media (min-width: 801px) and (max-width: 1200px) {
+    .home-grid {
+        grid-template-columns: 3fr 2fr;
+        gap: 60px;
+    }
+
+    .manchete {
+        padding-right: 40px;
+    }
+
+    .main { 
+      max-width: 90%; 
+    } 
+
+    :root {
+      --body-font-size: 18px;
+  }
+}
+
+/* Bigger screens */
+@media (min-width: 1201px) {
+    .main{ 
+      max-width: 1200px; 
+    } 
+}
