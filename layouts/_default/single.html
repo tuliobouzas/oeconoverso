@@ -1,18 +1,18 @@
 {{ define "main" }}
     <article class="info">
-        <div style="text-transform: uppercase; color: var(--theme-color-dark); font-size: 14px; letter-spacing: 1px; margin-bottom: 10px; text-align: center;">
+        <div style="font-family: var(--section-font); color: var(--theme-color-dark); font-size: 20px; letter-spacing: 1px; margin-bottom: 10px; text-align: center;">
             {{ .Section | humanize }}
         </div>
-        <h1 style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
+        <h1 class="{{ if or (eq .Section "sobre") (eq .Section "arquivo") (in .Title "Sobre") (in .Title "Arquivo") }}section-title{{ else }}article-title{{ end }}" style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
         <div style="font-size: 0.9rem; color: var(--theme-color-dark); margin-bottom: 2rem; text-align: center;">
             {{ .Date.Format "02 de janeiro de 2006" }}
         </div>
         
         {{ if .Params.image }}
-        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem;">
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem;">
         {{ end }}
 
-        <div class="content">
+        <div class="content article-content">
             {{ .Content }}
         </div>
     </article>

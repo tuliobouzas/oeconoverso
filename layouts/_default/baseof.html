@@ -32,6 +32,8 @@
     <script src="{{ "js/toggle-menu.js" | absURL }}" ></script>
     <!-- Script for theme toggle -->
     <script src="{{ "js/theme-toggle.js" | absURL }}" ></script>
+    <!-- Utilities Script -->
+    <script src="{{ "js/utils.js" | absURL }}" defer></script>
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ "style/global.css" | absURL }}">
@@ -73,11 +75,13 @@
                     (dict "href" (site.GetPage "/sobre").Permalink "label" "Sobre" "active" (eq .RelPermalink (site.GetPage "/sobre").RelPermalink))
                 }}
             
-                {{ range $links }}
-                    <a href="{{ .href }}" class="menubar-link{{ if .active }} menubar-active{{ end }}">
-                        <span class="label">{{ .label }}</span>
-                    </a>
-                {{ end }}
+                <div class="menu-links-container">
+                    {{ range $links }}
+                        <a href="{{ .href }}" class="menubar-link{{ if .active }} menubar-active{{ end }}">
+                            <span class="label">{{ .label }}</span>
+                        </a>
+                    {{ end }}
+                </div>
                 
             </div>
 
@@ -99,7 +103,7 @@
     </script>
 
     <div class="page-wrap">
-        <div class="main">
+        <div class="main{{ if .IsHome }} home-main{{ end }}">
             {{ block "main" . }}{{ end }}
         </div>
     </div>
