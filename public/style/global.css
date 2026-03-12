@@ -12,11 +12,14 @@
 }
 
 :root {
+    /* Typography */
     --body-font: 'Libre Baskerville', 'Baskerville', 'Baskerville Old Face', serif;
     --body-font-size: 18px;
     --title-font: 'Libre Caslon Text', 'Caslon', 'Adobe Caslon Pro', serif;
     --manchete-font: 'Ultra', serif;
     --section-font: 'Grenze Gotisch', serif;
+    
+    /* Colors */
     --body-color: #0a0a0a;
     --bg-color: #f9f2e4;
     --drawer-bg-color: #333333;
@@ -27,12 +30,16 @@
     --light-color: rgba(239,234,222,1);
     --money-color-dark: rgba(89,106,81);
     --menubar-color: rgb(60,58,56); /* rgba(83, 81, 77); */
+    
+    /* Layout & Sizing */
     --burger-size: 30px;
     --burger-thickness: 3px;
     --header-padding: 25px;
     --side-padding: 100px;
     --mobile-shrinkage: 0.7;
     --grid-gap: 28px;
+    
+    /* Filters */
     --svg-filter: none;
     --icon-filter: invert(21%) sepia(2%) saturate(1113%) hue-rotate(338deg) brightness(97%) contrast(85%); /* Exact #3C3A38 */
 }
@@ -461,9 +468,9 @@ iframe {
 .manchete-box {
     display: grid;
     grid-template-columns: 4fr 2fr;
-    gap: var(--grid-gap);
+    gap: 34px;
     width: calc(100% - var(--side-padding));
-    max-width: 1800px;
+    max-width: 1300px;
     margin: 0 auto;
     align-items: stretch;
     box-sizing: border-box;
@@ -488,7 +495,7 @@ iframe {
 /* Manchete Section inside Box */
 .manchete {
     padding-top: 27px;
-    padding-right: 40px; /* Internal spacing between columns */
+    padding-right: 0; /* Changed from 40px to 0 */
     display: block; /* Allow floating inside */
     height: 100%;
     box-sizing: border-box;
@@ -611,18 +618,19 @@ body.dark-mode .post-image {
     background: transparent;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Mesma altura da manchete */
+    height: 100%;
     box-sizing: border-box;
     width: 100%;
+    container-type: inline-size;
 }
 
 .econopedia-box h2 {
     font-family: 'DuvallSmallCaps', serif !important;
     font-weight: 400 !important;
-    font-size: clamp(32px, 4vw, 78px) !important;
+    font-size: clamp(24px, min(4vw, calc(100cqi / (var(--title-len) * 0.35))), 78px) !important;
     line-height: 1.1;
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     width: 90%;
     max-width: 800px;
     margin-left: auto;
@@ -707,43 +715,35 @@ body.dark-mode .post-image {
     article.info h1.article-title { font-size: 55px; }
     .section-title, .section-title a { font-size: 78px; }
     .drop-cap { font-size: 78px; }
-    #menu a { font-size: 31px; }
+    #menu a { font-size: 25px; }
     .manchete-meta { 
         font-size: 21px; 
         padding-top: 10px;
     }
-    .econopedia-box h2 { 
-        font-size: 35px !important; 
-        margin-bottom: 20px;
-    }
-    .econopedia-box .post-image {
-        margin-top: 0 !important;
-    }
+            .econopedia-box h2 {
+                font-size: clamp(36px, calc(100cqi / (var(--title-len) * 0.35)), 78px) !important;
+                margin-bottom: 20px;
+            }
+        
+          }
+    /* Tablet screens */
+    @media (min-width: 801px) and (max-width: 1200px) {
+      :root {
+        --body-font-size: 18px;
+      }
 
-    :root {
-      --body-font-size: 13px;
-    }
+      .home-grid {
+          grid-template-columns: 3fr 2fr;
+      }
+  
+      .main {
+        max-width: 90%;
+      }
 
-  }
-
-  /* Tablet screens */
-  @media (min-width: 801px) and (max-width: 1200px) {
-    .home-grid {
-        grid-template-columns: 3fr 2fr;
-        gap: 60px;
-    }
-
-    .manchete {
-        padding-right: 40px;
-    }
-
-    .main { 
-      max-width: 90%; 
-    } 
-
-    :root {
-      --body-font-size: 18px;
-  }
+      .econopedia-box h2 {
+          font-size: clamp(24px, min(4vw, calc(100cqi / (var(--title-len) * 0.38))), 78px) !important;
+          margin-bottom: 20px;
+      }
 }
 
 /* Bigger screens */
