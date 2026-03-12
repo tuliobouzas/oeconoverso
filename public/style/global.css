@@ -1,6 +1,8 @@
 /** GLOBAL THEME **/
 
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Ultra&family=Grenze+Gotisch:wght@400;700&family=Pirata+One&display=swap');
+@import url('https://fonts.cdnfonts.com/css/duvall');
+@import url('https://fonts.cdnfonts.com/css/figuera-variable');
 
 @font-face {
     font-family: 'Chomsky';
@@ -14,7 +16,7 @@
     --body-font-size: 18px;
     --title-font: 'Libre Caslon Text', 'Caslon', 'Adobe Caslon Pro', serif;
     --manchete-font: 'Ultra', serif;
-    --section-font: 'Chomsky', 'Chomsky-Regular', serif;
+    --section-font: 'Grenze Gotisch', serif;
     --body-color: #0a0a0a;
     --bg-color: #f9f2e4;
     --drawer-bg-color: #333333;
@@ -29,6 +31,8 @@
     --burger-thickness: 3px;
     --header-padding: 25px;
     --side-padding: 100px;
+    --mobile-shrinkage: 0.7;
+    --grid-gap: 28px;
     --svg-filter: none;
     --icon-filter: invert(21%) sepia(2%) saturate(1113%) hue-rotate(338deg) brightness(97%) contrast(85%); /* Exact #3C3A38 */
 }
@@ -195,55 +199,52 @@ article.info h1.article-title {
           transform: translateY(calc(-1 * var(--burger-size) / 2)) rotate(-45deg);
         }
 
-        /* Container for the coin logo in the menubar */
-        .menu-logo-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: 60px;
-        }
-
-        .menu-coin {
-          width: 90%;
-          height: auto;
-          filter: sepia(0.2) saturate(0.7) contrast(1.2) brightness(0.95);
-          transition: filter 0.3s ease;
-          /* Add subtle animation if desired, or keep it static */
-        }
-
-        body.dark-mode .menu-coin {
-          filter: none;
-        }
+                /* Container for the coin logo in the menubar */
+                .menu-logo-container {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin-bottom: min(60px, 4vh);
+                }
         
-        /* links of the menubar */
-        .menubar-link { 
-          text-decoration: none;
-          text-align: right; 
-          color: var(--drawer-link-color);
-          font-family: var(--section-font) !important;
-          font-size: 40px;
-          padding: 15px 30px; 
-          display: block;                                         
-          position: relative;
-          cursor: pointer;
-          transition: color 0.3s;
-        }  
+                .menu-coin {
+                  width: 90%;
+                  height: auto;
+                  filter: sepia(0.2) saturate(0.7) contrast(1.2) brightness(0.95);
+                  transition: filter 0.3s ease;
+                  /* Add subtle animation if desired, or keep it static */
+                }
         
-        .menubar-link span.label {
-          font-family: var(--section-font) !important;
-        }
+                body.dark-mode .menu-coin {
+                  filter: none;
+                }
         
-        /* underline for hovered button */
-        .label{
-          position: relative;
-          display: inline-flex;
-          flex-direction: row-reverse;
-          align-items: center;
-          text-align: right;
-          min-height: 50px;
-        }
-
-        .label::before {
+                        /* links of the menubar */
+                        .menubar-link {
+                          text-decoration: none;
+                          text-align: right;
+                          color: var(--drawer-link-color);
+                          font-family: var(--section-font) !important;
+                          font-size: 40px;
+                          padding: min(15px, 0.6vh) 30px;
+                          display: block;
+                          position: relative;
+                          cursor: pointer;
+                          transition: color 0.3s;
+                        }        
+                .menubar-link span.label {
+                  font-family: var(--section-font) !important;
+                }
+        
+                /* underline for hovered button */
+                .label{
+                  position: relative;
+                  display: inline-flex;
+                  flex-direction: row-reverse;
+                  align-items: center;
+                  text-align: right;
+                  min-height: min(50px, 3vh);
+                }        .label::before {
           content: "";
           position: absolute;
           width: 0;
@@ -456,29 +457,40 @@ iframe {
   border: none;
 }
 
-/* Home Grid Layout */
-.home-grid {
+/* Home Grid Layout & Manchete Box Container */
+.manchete-box {
     display: grid;
     grid-template-columns: 4fr 2fr;
-    gap: 40px;
+    gap: var(--grid-gap);
     width: calc(100% - var(--side-padding));
+    max-width: 1800px;
     margin: 0 auto;
-    align-items: start;
+    align-items: stretch;
+    box-sizing: border-box;
+    min-height: 80vh;
+    padding-bottom: 60px;
 }
 
-.home-grid .info {
-    width: 100%;
-    max-width: none;
-    margin: 0;
+/* Tablet screens overrides */
+@media (min-width: 801px) and (max-width: 1200px) {
+    .manchete-box {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .manchete .post-image {
+        float: none !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 30px;
+    }
 }
 
-/* Manchete Style */
+/* Manchete Section inside Box */
 .manchete {
-    padding-top: 27px; /* 25px padding + 2px border of econopedia-box */
-    padding-right: 40px;
-    display: flex;
-    flex-direction: column;
-    height: 80vh; /* Altura total fixa para as duas colunas */
+    padding-top: 27px;
+    padding-right: 40px; /* Internal spacing between columns */
+    display: block; /* Allow floating inside */
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -489,6 +501,10 @@ iframe {
     margin-bottom: 20px;
     line-height: 1.1;
     text-align: left;
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .manchete-meta {
@@ -497,12 +513,27 @@ iframe {
     color: var(--theme-color-dark);
     margin-bottom: 15px;
     letter-spacing: 1px;
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.manchete img, .econopedia-box img {
-    width: 100%;
-    height: 250px; /* Altura fixa para as imagens para garantir alinhamento */
-    object-fit: cover; /* Corta a imagem sem distorcer */
+.manchete .post-image {
+    /* Gazeta main image desktop style */
+    float: left;
+    width: 65%;
+    max-width: 780px;
+    height: auto;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.econopedia-box img {
+    /* Econopédia image fluid style */
+    width: 100% !important;
+    height: auto !important; /* Scale proportionally without cropping */
     margin-bottom: 20px;
 }
 
@@ -529,7 +560,9 @@ body.dark-mode .post-image {
     flex-grow: 1; /* Ocupa todo o espaço restante */
     overflow: hidden;
     min-height: 0; /* Ensures flex child can shrink smaller than its content */
+    max-height: 60vh;
     margin-bottom: 10px;
+    padding-bottom: 80px; /* Garante que o gradiente e botão tenham espaço sem encobrir texto curto */
 }
 
 .summary-gradient {
@@ -537,30 +570,37 @@ body.dark-mode .post-image {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100px;
-    background: linear-gradient(transparent, var(--bg-color));
+    height: 150px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-color) 70%, var(--bg-color) 100%);
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 10px;
+    z-index: 10;
 }
 
 .read-more-btn {
-    background: var(--body-color);
-    color: var(--bg-color);
-    padding: 10px 25px;
-    border-radius: 25px;
+    background: var(--bg-color);
+    color: var(--body-color);
+    padding: 8px 20px;
+    border: 2px solid var(--body-color);
+    border-radius: 0;
     text-decoration: none;
+    font-family: var(--title-font);
     font-weight: bold;
     font-size: var(--body-font-size);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.2s, background 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 4px 4px 0px var(--theme-color);
+    transition: all 0.2s ease;
     display: inline-block;
 }
 
 .read-more-btn:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+    background: var(--body-color);
+    color: var(--bg-color);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--theme-color);
 }
 
 /* Econopédia Box Style */
@@ -571,41 +611,62 @@ body.dark-mode .post-image {
     background: transparent;
     display: flex;
     flex-direction: column;
-    height: 80vh; /* Mesma altura da manchete */
+    height: 100%; /* Mesma altura da manchete */
     box-sizing: border-box;
+    width: 100%;
 }
 
 .econopedia-box h2 {
-    font-family: var(--title-font);
-    font-size: 28px;
+    font-family: 'DuvallSmallCaps', serif !important;
+    font-weight: 400 !important;
+    font-size: clamp(32px, 4vw, 78px) !important;
+    line-height: 1.1;
     margin-top: 0;
     margin-bottom: 15px;
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
-
 
 /* MEDIA QUERIES */
 
 /* Mobile page */
 @media (max-width: 800px) {
     
-    .home-grid {
+    :root {
+      --body-font-size: 13px;
+      --side-padding: calc(100px * (1 - var(--mobile-shrinkage)));
+    }
+
+    .manchete-box {
         grid-template-columns: 1fr;
-        gap: 40px;
+        width: calc(100% - var(--side-padding));
+        margin: 0 auto;
+        gap: var(--grid-gap);
+        min-height: auto;
+    }
+
+    .manchete .post-image {
+        width: 100% !important;
+        float: none !important;
+        margin-right: 0 !important;
+        height: auto !important;
     }
 
     .manchete {
-        padding-right: 0;
-        border-bottom: 1px solid var(--body-color);
+        border-bottom: none;
         padding-bottom: 40px;
-        height: auto; /* Deixa crescer no mobile */
+        padding-right: 0;
+        height: auto;
     }
 
     .econopedia-box {
-        height: auto; /* Deixa crescer no mobile */
+        height: auto;
     }
 
     .manchete h1 {
-        font-size: 32px;
+        font-size: 25px;
         min-height: auto;
     }
 
@@ -619,17 +680,17 @@ body.dark-mode .post-image {
     }
 
     .title-logo {
-      max-width: 300px;
+      max-width: 80vw;
     }
 
     .main{ 
-      width: 90%; 
+      width: 100%; 
       flex-direction: column; 
       min-height: 52vh; 
     }  
 
     .page-wrap {
-      margin-top: 140px;
+      margin-top: 90px;
     }
 
     .footer-bar { 
@@ -643,8 +704,24 @@ body.dark-mode .post-image {
       width: 30px; 
     }
 
+    article.info h1.article-title { font-size: 55px; }
+    .section-title, .section-title a { font-size: 78px; }
+    .drop-cap { font-size: 78px; }
+    #menu a { font-size: 31px; }
+    .manchete-meta { 
+        font-size: 21px; 
+        padding-top: 10px;
+    }
+    .econopedia-box h2 { 
+        font-size: 35px !important; 
+        margin-bottom: 20px;
+    }
+    .econopedia-box .post-image {
+        margin-top: 0 !important;
+    }
+
     :root {
-      --body-font-size: 16px;
+      --body-font-size: 13px;
     }
 
   }

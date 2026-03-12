@@ -44,3 +44,9 @@
     }
 }
 
+@media (max-width: 800px) {
+    .info em, .info-home em {
+        font-size: 22px;
+    }
+}
+
