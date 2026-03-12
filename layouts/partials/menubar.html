@@ -1,0 +1,37 @@
+<!-- Menu -->
+<input type="checkbox" id="menu-toggle" hidden>
+<label for="menu-toggle" class="burger" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+</label>
+
+<!-- Theme Toggle -->
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+    <svg id="theme-icon" viewBox="0 0 24 24">
+        <!-- Icon will be inserted by JS -->
+    </svg>
+</button>
+
+<div id="my-links">
+    <div class="menu-logo-container">
+        <img src="{{ "img/moeda.webp" | relURL }}" alt="Moeda" class="menu-coin">
+    </div>
+
+    {{ $links := slice
+        (dict "href" site.Home.Permalink "label" "Primeira página" "active" (eq .RelPermalink site.Home.RelPermalink))
+        (dict "href" (site.GetPage "/gazeta").Permalink "label" "Gazeta" "active" (in .RelPermalink "/gazeta/"))
+        (dict "href" (site.GetPage "/econopedia").Permalink "label" "Econopédia" "active" (in .RelPermalink "/econopedia/"))
+        (dict "href" (site.GetPage "/acervo").Permalink "label" "Acervo" "active" (eq .RelPermalink (site.GetPage "/acervo").RelPermalink))
+        (dict "href" (site.GetPage "/sobre").Permalink "label" "Sobre" "active" (eq .RelPermalink (site.GetPage "/sobre").RelPermalink))
+    }}
+
+    <div class="menu-links-container">
+        {{ range $links }}
+            <a href="{{ .href }}" class="menubar-link{{ if .active }} menubar-active{{ end }}">
+                <span class="label">{{ .label }}</span>
+            </a>
+        {{ end }}
+    </div>
+    
+</div>

@@ -1,17 +1,19 @@
 {{ define "main" }}
+<link rel="stylesheet" href="{{ "css/home.css" | absURL }}">
+<script src="{{ "js/home.js" | absURL }}" defer></script>
 <div class="home-grid manchete-box">
     <!-- Seção Gazeta (Manchete) -->
     <section class="manchete">
         {{ range first 1 (where .Site.RegularPages "Section" "gazeta") }}
         <div class="manchete-meta">Gazeta | {{ .Date.Format "02 de Janeiro de 2006" }}</div>
         
-        <h1 class="article-title"><a href="{{ .RelPermalink }}" style="color: inherit; text-decoration: none;">{{ .Title }}</a></h1>
+        <h1 class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
         
         <div class="summary-wrapper">
             <div class="info">
                 {{ if .Params.image }}
                 <a href="{{ .RelPermalink }}">
-                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image" style="float: left; width: 65%; max-width: 780px; height: auto; margin-right: 30px; margin-bottom: 20px; object-fit: cover;">
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
                 </a>
                 {{ end }}
                 {{ .Content }}

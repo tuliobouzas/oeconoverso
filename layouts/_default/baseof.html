@@ -2,106 +2,11 @@
 <html lang="{{ .Site.LanguageCode }}">
 
 <head>
-    <script>document.documentElement.classList.add('js');</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{{ .Title }}</title>
-
-    <!-- Page icon -->
-    <link rel="icon" type="image/png" href="{{ "icons/icon.webp" | absURL }}" />
-
-    <!-- Metadata -->
-    <meta name="description" content="{{ .Params.description }}">
-    <link rel="canonical" href="{{ .Permalink }}" />
-    <meta name="language" content="en" />
-
-    <!-- Metadata for social media -->
-    <meta property="og:title" content="{{ .Title }}" />
-    <meta property="og:description" content="{{ .Params.description }}">
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ .Permalink }}" />
-    <meta property="og:image" content="{{ "img/preview.webp" | absURL }}">
-
-    <!-- Twitter Card metadata -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ .Title }}" />
-    <meta name="twitter:description" content="{{.Params.description }}" />
-    <meta name="twitter:image" content="{{ "img/preview.webp" | absURL }}" />
-
-    <!-- Script for the toggle menu -->
-    <script src="{{ "js/toggle-menu.js" | absURL }}" ></script>
-    <!-- Script for theme toggle -->
-    <script src="{{ "js/theme-toggle.js" | absURL }}" ></script>
-    <!-- Utilities Script -->
-    <script src="{{ "js/utils.js" | absURL }}" defer></script>
-    
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="{{ "style/global.css" | absURL }}">
-
-    <!-- Markdown Stylesheet -->
-    <link rel="stylesheet" href="{{ "style/markdown.css" | absURL }}">
-
+    {{ partial "head.html" . }}
 </head> 
 
 <body>
-    <div class="top-container">
-        <div class="header">
-            
-            <!-- Menu -->
-            <input type="checkbox" id="menu-toggle" hidden>
-            <label for="menu-toggle" class="burger" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <!-- Theme Toggle -->
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-                <svg id="theme-icon" viewBox="0 0 24 24">
-                    <!-- Icon will be inserted by JS -->
-                </svg>
-            </button>
-
-            <div id="my-links">
-                <div class="menu-logo-container">
-                    <img src="{{ "img/moeda.webp" | relURL }}" alt="Moeda" class="menu-coin">
-                </div>
-
-                {{ $links := slice
-                    (dict "href" site.Home.Permalink "label" "Primeira página" "active" (eq .RelPermalink site.Home.RelPermalink))
-                    (dict "href" (site.GetPage "/gazeta").Permalink "label" "Gazeta" "active" (in .RelPermalink "/gazeta/"))
-                    (dict "href" (site.GetPage "/econopedia").Permalink "label" "Econopédia" "active" (in .RelPermalink "/econopedia/"))
-                    (dict "href" (site.GetPage "/arquivo").Permalink "label" "Arquivo" "active" (eq .RelPermalink (site.GetPage "/arquivo").RelPermalink))
-                    (dict "href" (site.GetPage "/sobre").Permalink "label" "Sobre" "active" (eq .RelPermalink (site.GetPage "/sobre").RelPermalink))
-                }}
-            
-                <div class="menu-links-container">
-                    {{ range $links }}
-                        <a href="{{ .href }}" class="menubar-link{{ if .active }} menubar-active{{ end }}">
-                            <span class="label">{{ .label }}</span>
-                        </a>
-                    {{ end }}
-                </div>
-                
-            </div>
-
-            <div class="title">
-                <img src="{{ "img/oeconoverso.svg" | absURL }}" alt="O Econoverso" class="title-logo">
-            </div>
-        </div>
-
-        <div class="newspaper-bar">
-            <div class="newspaper-line-top"></div>
-            <div class="newspaper-date" id="newspaper-date"></div>
-            <div class="newspaper-line-bottom"></div>
-        </div>
-    </div>
-    <script>
-        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        let dateStr = new Date().toLocaleDateString('pt-BR', dateOptions);
-        document.getElementById('newspaper-date').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
-    </script>
+    {{ partial "header.html" . }}
 
     <div class="page-wrap">
         <div class="main{{ if .IsHome }} home-main{{ end }}">

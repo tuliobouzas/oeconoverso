@@ -1,0 +1,166 @@
+/* Home Grid Layout & Manchete Box Container */
+.manchete-box {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    gap: 34px;
+    width: calc(100% - var(--side-padding));
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: stretch;
+    box-sizing: border-box;
+    min-height: 80vh;
+    padding-bottom: 60px;
+}
+
+/* Manchete Section inside Box */
+.manchete {
+    padding: var(--container-padding);
+    padding-right: 0;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.manchete h1 {
+    font-size: var(--headline-size);
+    margin-top: 0;
+    margin-bottom: var(--element-gap);
+    line-height: 1.1;
+    text-align: left;
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.manchete h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.manchete .post-image {
+    float: left;
+    width: 65% !important;
+    max-width: 780px;
+    height: auto !important;
+    margin-right: 30px;
+    margin-bottom: var(--element-gap);
+    object-fit: cover;
+}
+
+/* Econopédia Box Style */
+.econopedia-box {
+    border: 2px solid var(--body-color);
+    border-radius: 15px;
+    padding: var(--container-padding);
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    container-type: inline-size;
+}
+
+.econopedia-box img {
+    width: 100% !important;
+    height: auto !important;
+    margin-bottom: var(--element-gap);
+}
+
+.econopedia-box h2 {
+    font-family: 'DuvallSmallCaps', serif !important;
+    font-weight: 400 !important;
+    font-size: clamp(24px, min(4vw, calc(100cqi / (var(--title-len) * 0.35))), 78px) !important;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: var(--element-gap);
+    width: 90%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Summary Fade-out Effect */
+.summary-wrapper {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+    min-height: 0;
+    max-height: 60vh;
+    margin-bottom: 10px;
+    padding-bottom: 80px;
+}
+
+.summary-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent 0%, var(--bg-color) 70%, var(--bg-color) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    z-index: 10;
+}
+
+/* RESPONSIVE OVERRIDES */
+
+/* Tablet Screens */
+@media (min-width: 801px) and (max-width: 1200px) {
+    .manchete-box {
+        grid-template-columns: 3fr 2fr;
+    }
+
+    .manchete .post-image {
+        float: none !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+
+    .econopedia-box h2 {
+        font-size: clamp(24px, min(4vw, calc(100cqi / (var(--title-len) * 0.38))), 78px) !important;
+        margin-bottom: var(--element-gap);
+    }
+}
+
+/* Mobile Screens */
+@media (max-width: 800px) {
+    .manchete-box {
+        grid-template-columns: 1fr;
+        width: calc(100% - var(--side-padding));
+        margin: 0 auto;
+        gap: var(--grid-gap);
+        min-height: auto;
+    }
+
+    .manchete .post-image {
+        width: 100% !important;
+        float: none !important;
+        margin-right: 0 !important;
+        height: auto !important;
+    }
+
+    .manchete {
+        border-bottom: none;
+        padding-bottom: 40px;
+        padding-right: 0;
+        height: auto;
+    }
+
+    .manchete h1 {
+        font-size: var(--headline-size-mobile);
+        min-height: auto;
+    }
+
+    .econopedia-box {
+        height: auto;
+    }
+
+    .econopedia-box h2 {
+        font-size: clamp(36px, calc(100cqi / (var(--title-len) * 0.35)), 78px) !important;
+        margin-bottom: var(--element-gap);
+    }
+}

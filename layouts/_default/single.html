@@ -1,15 +1,16 @@
 {{ define "main" }}
+    {{ $isSection := or (eq .File.BaseFileName "sobre") (eq .File.BaseFileName "acervo") }}
     <article class="info">
-        <div style="font-family: var(--section-font); color: var(--theme-color-dark); font-size: 20px; letter-spacing: 1px; margin-bottom: 10px; text-align: center;">
-            {{ .Section | humanize }}
+        {{ if not $isSection }}
+        <div class="manchete-meta" style="text-align: center;">
+            {{ if .Section }}{{ .Section | humanize }}{{ else }}{{ .Title }}{{ end }}
+            {{ if ne .Section "econopedia" }} | {{ .Date.Format "02 de Janeiro de 2006" }}{{ end }}
         </div>
-        <h1 class="{{ if or (eq .Section "sobre") (eq .Section "arquivo") (in .Title "Sobre") (in .Title "Arquivo") }}section-title{{ else }}article-title{{ end }}" style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
-        <div style="font-size: 0.9rem; color: var(--theme-color-dark); margin-bottom: 2rem; text-align: center;">
-            {{ .Date.Format "02 de janeiro de 2006" }}
-        </div>
+        {{ end }}
+        <h1 class="{{ if $isSection }}section-title{{ else }}article-title{{ end }}" style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
         
-        {{ if .Params.image }}
-        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem;">
+        {{ if and .Params.image (not $isSection) }}
+        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
         {{ end }}
 
         <div class="content article-content">

@@ -1,0 +1,66 @@
+:root {
+    /* Typography */
+    --body-font: 'Libre Baskerville', 'Baskerville', 'Baskerville Old Face', serif;
+    --body-font-size: 18px;
+    --title-font: 'Libre Caslon Text', 'Caslon', 'Adobe Caslon Pro', serif;
+    --manchete-font: 'Ultra', serif;
+    --section-font: 'Chomsky', serif;
+    --headline-size: 48px;
+    --headline-size-mobile: 25px;
+    --title-single-size: 70px;
+    --title-single-size-mobile: 55px;
+    
+    /* Colors */
+    --body-color: #0a0a0a;
+    --bg-color: #f9f2e4;
+    --drawer-bg-color: #333333;
+    --drawer-link-color: white;
+    --link-color: rgb(68, 125, 190); 
+    --theme-color: rgb(170, 151, 114);
+    --theme-color-dark: rgb(170, 151, 114);
+    --light-color: rgba(239,234,222,1);
+    --money-color-dark: rgba(89,106,81);
+    --menubar-color: rgb(60,58,56);
+    
+    /* Layout & Sizing */
+    --burger-size: 30px;
+    --burger-thickness: 3px;
+    --header-padding: 25px;
+    --side-padding: 100px;
+    --mobile-shrinkage: 0.7;
+    --grid-gap: 28px;
+    
+    /* Filters */
+    --svg-filter: none;
+    --icon-filter: invert(21%) sepia(2%) saturate(1113%) hue-rotate(338deg) brightness(97%) contrast(85%);
+}
+
+body.dark-mode {
+    --body-color: #e0e0e0;
+    --bg-color: #121212;
+    --drawer-bg-color: #e0e0e0;
+    --drawer-link-color: #121212;
+    --link-color: rgb(110, 168, 230);
+    --theme-color: rgb(111, 146, 135);
+    --theme-color-dark: rgb(164, 178, 161);
+    --menubar-color: #e0e0e0;
+    --svg-filter: invert(1);
+    --icon-filter: invert(99%) sepia(0%) saturate(1141%) hue-rotate(349deg) brightness(114%) contrast(76%);
+}
+
+/* Responsive Variable Overrides */
+
+/* Mobile */
+@media (max-width: 800px) {
+    :root {
+      --body-font-size: 13px;
+      --side-padding: calc(100px * (1 - var(--mobile-shrinkage)));
+    }
+}
+
+/* Tablet */
+@media (min-width: 801px) and (max-width: 1200px) {
+    :root {
+      --body-font-size: 18px;
+    }
+}

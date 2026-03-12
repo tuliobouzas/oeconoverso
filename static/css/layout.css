@@ -1,0 +1,83 @@
+:root {
+    --container-padding: 25px;
+    --element-gap: 20px;
+}
+
+/* top container for the fixed header */
+.top-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg-color);
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+/* general page wrapper */
+.page-wrap {
+    padding-bottom: 60px;
+    margin-top: 180px; 
+}    
+
+/* main content block */
+.main { 
+  padding-top: 40px;                                                    
+  min-height: 52vh;
+  box-sizing: border-box; 
+  flex-wrap: wrap; 
+  flex-grow: 1;
+  margin: auto; 
+  margin-right: auto; 
+}                                 
+
+.main > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* textual content block */
+.info { 
+  text-align: justify; 
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}               
+
+.info > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* RESPONSIVE LAYOUT OVERRIDES */
+
+/* Tablet Screens */
+@media (min-width: 801px) and (max-width: 1200px) {
+      .main {
+        max-width: 90%;
+      }
+}
+
+/* Mobile Screens */
+@media (max-width: 800px) {
+    .main{ 
+      width: 100%; 
+      flex-direction: column; 
+      min-height: 52vh; 
+    }  
+
+    .page-wrap {
+      margin-top: 90px;
+    }
+}
+
+/* Bigger Screens */
+@media (min-width: 1201px) {
+    .main{ 
+      max-width: 1200px; 
+    } 
+
+    .home-main {
+      max-width: 1800px;
+    }
+}

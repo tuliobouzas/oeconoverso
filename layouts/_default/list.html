@@ -5,27 +5,38 @@
     {{ .Content }}
 
     <div style="margin-top: 3rem;">
-        {{ range .Pages }}
-        <article style="margin-bottom: 4rem; border-bottom: 1px solid var(--theme-color); padding-bottom: 2rem;">
-            <div style="font-family: var(--section-font); color: var(--theme-color-dark); font-size: 16px; letter-spacing: 1px; margin-bottom: 5px;">
-                {{ .Date.Format "02 de Janeiro de 2006" }}
-            </div>
-            <h2 style="margin-top: 0;">
-                <a href="{{ .RelPermalink }}" style="text-decoration: none; color: var(--body-color); font-weight: bold;">{{ .Title }}</a>
-            </h2>
-            
-            {{ if .Params.image }}
-            <a href="{{ .RelPermalink }}">
-                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1.5rem;">
-            </a>
-            {{ end }}
+        {{ if eq .Section "econopedia" }}
+            <ol style="list-style: none; padding-left: 0;">
+                {{ range $index, $element := .Pages.ByDate }}
+                <li style="margin-bottom: 1.5rem; display: flex; align-items: baseline;">
+                    <span style="font-family: var(--section-font); font-size: 24px; color: var(--theme-color-dark); margin-right: 15px; min-width: 30px; text-align: right;">{{ add $index 1 }}.</span>
+                    <a href="{{ .RelPermalink }}" style="font-family: var(--body-font); font-size: 22px; color: var(--body-color); text-decoration: none; border-bottom: 1px solid transparent; transition: border-bottom 0.2s;">{{ .Title }}</a>
+                </li>
+                {{ end }}
+            </ol>
+        {{ else }}
+            {{ range .Pages }}
+            <article style="margin-bottom: 4rem; border-bottom: 1px solid var(--theme-color); padding-bottom: 2rem;">
+                <div class="manchete-meta" style="margin-left: 0; margin-right: 0;">
+                    {{ .Section | humanize }} | {{ .Date.Format "02 de Janeiro de 2006" }}
+                </div>
+                <h2 class="gazeta-list-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                
+                {{ if .Params.image }}
+                <a href="{{ .RelPermalink }}">
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
+                </a>
+                {{ end }}
 
-            <div style="margin-bottom: 1.5rem;">
-                {{ .Summary }}
-            </div>
-            
-            <a href="{{ .RelPermalink }}" class="read-more-btn">Leia o artigo completo</a>
-        </article>
+                <div style="margin-bottom: 1.5rem;">
+                    {{ .Summary }}
+                </div>
+                
+                <a href="{{ .RelPermalink }}" class="read-more-btn">Continuar lendo...</a>
+            </article>
+            {{ end }}
         {{ end }}
     </div>
 </div>

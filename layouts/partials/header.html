@@ -1,0 +1,22 @@
+<div class="top-container">
+    <div class="header">
+        
+        {{ partial "menubar.html" . }}
+
+        <div class="title">
+            <img src="{{ "img/oeconoverso.svg" | absURL }}" alt="O Econoverso" class="title-logo">
+        </div>
+    </div>
+
+    <div class="newspaper-bar">
+        <div class="newspaper-line-top"></div>
+        <div class="newspaper-date" id="newspaper-date"></div>
+        <div class="newspaper-line-bottom"></div>
+    </div>
+</div>
+
+<script>
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let dateStr = new Date().toLocaleDateString('pt-BR', dateOptions);
+    document.getElementById('newspaper-date').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+</script>

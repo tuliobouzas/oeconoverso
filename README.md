@@ -19,7 +19,7 @@ Welcome to the repository for "O Econoverso". This site is built using [Hugo](ht
   - **img/** – Contains images used across the site.
     - **backup/** – Legacy or auxiliary image assets.
   - **js/** – JavaScript files.
-  - **style/** – CSS stylesheets.
+  - **css/** – CSS stylesheets.
 
 - **.git/** and **.github/** – Git-related and GitHub-specific configuration folders.
 

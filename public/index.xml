@@ -23,18 +23,18 @@
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;&#xA;&lt;p&gt;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;&#xA;&lt;p&gt;Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Arquivo do Econoverso</title>
-      <link>http://localhost:1313/oeconoverso/arquivo/</link>
+      <title>Acervo</title>
+      <link>http://localhost:1313/oeconoverso/acervo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/oeconoverso/arquivo/</guid>
-      <description>&lt;h1 id=&#34;welcome&#34;&gt;Welcome!&lt;/h1&gt;&#xA;&lt;/br&gt;&#xA;&lt;p&gt;My name is Tulio Bouzas, and I am pursuing my PhD in Economics at Tilburg University. My academic endeavors are broadly focused on macro, monetary economics and development. I have a particular interest in exploring the micro-foundations of money within heterogeneous agents models, alongside its relationship with financial development. My supervisors are &lt;a href=&#34;https://sites.google.com/site/burakruras/home?authuser=0&#34;&gt;Dr. Burak Uras&lt;/a&gt; and&#xA;&lt;a href=&#34;https://sites.google.com/site/hasvanvlokhoven/&#34;&gt;Dr. Has van Vlokhoven&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Contact info:&lt;/em&gt; &lt;/br&gt;&#xA;&lt;a href=&#34;mailto:T.bouzas@tilburguniversity.edu&#34;&gt;T.bouzas@tilburguniversity.edu&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Curriculum Vitae:&lt;/em&gt; &lt;/br&gt;&#xA;&lt;a href=&#34;http://localhost:1313/oeconoverso/files/cv.pdf&#34;&gt;Download&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Office&lt;/em&gt; &lt;/br&gt;&#xA;K342, Warandelaan 2, 5037 AB Tilburg, NL&lt;/p&gt;</description>
+      <guid>http://localhost:1313/oeconoverso/acervo/</guid>
+      <description>&lt;p&gt;O Acervo é uma coleção de recursos dedicados ao estudo e à compreensão da economia, reunindo materiais que servem como base para o aprendizado e consulta.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sobre O Econoverso</title>
       <link>http://localhost:1313/oeconoverso/sobre/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/oeconoverso/sobre/</guid>
-      <description>&lt;h1 id=&#34;welcome&#34;&gt;Welcome!&lt;/h1&gt;&#xA;&lt;/br&gt;&#xA;&lt;p&gt;My name is Tulio Bouzas, and I am pursuing my PhD in Economics at Tilburg University. My academic endeavors are broadly focused on macro, monetary economics and development. I have a particular interest in exploring the micro-foundations of money within heterogeneous agents models, alongside its relationship with financial development. My supervisors are &lt;a href=&#34;https://sites.google.com/site/burakruras/home?authuser=0&#34;&gt;Dr. Burak Uras&lt;/a&gt; and&#xA;&lt;a href=&#34;https://sites.google.com/site/hasvanvlokhoven/&#34;&gt;Dr. Has van Vlokhoven&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;/br&gt;&lt;/br&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Contact info:&lt;/em&gt; &lt;/br&gt;&#xA;&lt;a href=&#34;mailto:T.bouzas@tilburguniversity.edu&#34;&gt;T.bouzas@tilburguniversity.edu&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Curriculum Vitae:&lt;/em&gt; &lt;/br&gt;&#xA;&lt;a href=&#34;http://localhost:1313/oeconoverso/files/cv.pdf&#34;&gt;Download&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Office&lt;/em&gt; &lt;/br&gt;&#xA;K342, Warandelaan 2, 5037 AB Tilburg, NL&lt;/p&gt;</description>
+      <description>&lt;p&gt;O Econoverso é um projeto dedicado ao ensino e divulgação de economia de forma clara e acessível. Este site é um projeto desenvolvido por Túlio Bouzas e Hierro Castro.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
