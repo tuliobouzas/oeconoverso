@@ -29,7 +29,7 @@
     <aside class="econopedia-box">
         {{ range first 1 (shuffle (where .Site.RegularPages "Section" "econopedia")) }}
         <div class="manchete-meta">Econopédia</div>
-        <h2 class="article-title" style="--title-len: {{ len .Title }}; font-family: 'DuvallSmallCaps', serif !important; font-weight: 400 !important; line-height: 1.1;"><a href="{{ .RelPermalink }}" style="font-family: inherit !important; color: inherit; text-decoration: none;">{{ .Title }}</a></h2>
+        <h2 class="article-title" style="--title-len: {{ len .Title }}; font-family: var(--econopedia-font) !important; font-weight: 400 !important; line-height: 1.1;"><a href="{{ .RelPermalink }}" style="font-family: inherit !important; color: inherit; text-decoration: none;">{{ .Title }}</a></h2>
 
         <div class="summary-wrapper">
             <div class="info">

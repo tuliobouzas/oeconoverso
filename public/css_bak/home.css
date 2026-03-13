@@ -2,9 +2,9 @@
 .manchete-box {
     display: grid;
     grid-template-columns: 4fr 2fr;
-    gap: 3vw;
+    gap: 34px;
     width: calc(100% - var(--side-padding));
-    max-width: none;
+    max-width: 1300px;
     margin: 0 auto;
     align-items: stretch;
     box-sizing: border-box;
@@ -30,27 +30,21 @@
     margin-bottom: var(--element-gap);
     line-height: 0.95;
     text-align: left;
-    width: 100%;
+    width: fit-content;
+    max-width: 800px;
     margin-left: 0;
-    margin-right: 0;
-    overflow-wrap: break-word;
-    word-break: break-word;
+    margin-right: auto;
 }
 
-.manchete .manchete-meta, 
-.manchete .info {
-    width: 100%;
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.manchete h1 a {                                                                                 
-    font-family: 'Archivo Black', sans-serif !important; 
-    letter-spacing: -0.05em; 
-    color: inherit; 
+.manchete h1 a {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif !important;
+    transform: scaleX(0.85);
+    transform-origin: 18%;
+    letter-spacing: -0.05em;
+    color: inherit;
     text-decoration: none;
-}               
+}
 
 .manchete .post-image {
     float: left;
@@ -65,7 +59,7 @@
 /* Econopédia Box Style */
 .econopedia-box {
     border: 2px solid var(--body-color);
-    border-radius: 0;
+    border-radius: 15px;
     padding: var(--container-padding);
     background: transparent;
     display: flex;
@@ -107,19 +101,6 @@
     padding-bottom: 80px;
 }
 
-/* Fix gap issue caused by <p> margin pushing floated image down */
-.summary-wrapper .info > p:first-of-type {    
-    margin-top: 0 !important; 
-} 
-
-.summary-wrapper .info p {
-    text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-} 
-
 .summary-gradient {
     position: absolute;
     bottom: 0;
@@ -140,7 +121,6 @@
 @media (min-width: 801px) and (max-width: 1200px) {
     .manchete-box {
         grid-template-columns: 3fr 2fr;
-        gap: 4vw;
     }
 
     .manchete .post-image {
@@ -175,7 +155,7 @@
     .manchete {
         border-bottom: none;
         padding-bottom: 40px;
-        padding-right: var(--container-padding);
+        padding-right: 0;
         height: auto;
     }
 

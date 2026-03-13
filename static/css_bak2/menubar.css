@@ -1,0 +1,191 @@
+/* header wrapper for navigation elements */
+.header { 
+  height: auto; 
+  width: 100%; 
+  position: relative;
+}                                             
+
+/* burger menu button */
+.burger {
+  position: absolute;
+  top: 15px;
+  left: calc(var(--side-padding) / 2); /* Aligned with side padding */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--burger-size);
+  height: var(--burger-size);
+  cursor: pointer;
+  z-index: 3100; /* Maior que o z-index do #my-links */
+  transition: all 0.25s;
+}
+
+.burger span {
+  display: block; /* Ensure spans render correctly inside flex column */
+  width: 100%;
+  height: var(--burger-thickness);
+  background-color: var(--menubar-color);
+  transition: all 0.25s;
+}
+
+/* sidebar drawer */
+#my-links {
+  display: flex;                                        /* display flex so it can animate    */ 
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 350px;
+  background: var(--drawer-bg-color) !important;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  z-index: 2050;
+  transform: translateX(-100%);                         /* Start hidden to the left */
+  transition: transform 0.3s ease-in-out, background 0.3s;
+} 
+
+/* when the checkbox is checked, slide the menu in */
+#menu-toggle:checked ~ #my-links {
+  transform: translateX(0);
+  z-index: 3000; /* Garante que fique acima de tudo */
+}
+
+/* animating the burger menu button */
+#menu-toggle:checked + .burger {
+  transform: rotate(360deg);
+}
+
+#menu-toggle:checked + .burger span {
+  background-color: var(--drawer-link-color);
+}
+
+#menu-toggle:checked + .burger span:nth-child(1) {
+  transform: translateY(calc(var(--burger-size) / 2 - var(--burger-thickness))) rotate(45deg);
+}
+#menu-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:checked + .burger span:nth-child(3) {
+  transform: translateY(calc(-1 * var(--burger-size) / 2)) rotate(-45deg);
+}
+
+/* Container for the coin logo in the menubar */
+.menu-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: min(60px, 4vh);
+}
+
+.menu-coin {
+  width: 90%;
+  height: auto;
+  filter: sepia(0.2) saturate(0.7) contrast(1.2) brightness(0.95);
+  transition: filter 0.3s ease;
+}
+
+body.dark-mode .menu-coin {
+  filter: none;
+}
+
+/* links of the menubar */
+.menubar-link {
+  text-decoration: none;
+  text-align: right;
+  color: var(--drawer-link-color);
+  font-family: var(--section-font) !important;
+  font-size: var(--menu-font-size);
+  padding: min(15px, 0.6vh) 30px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.3s;
+}        
+.menubar-link span.label {
+  font-family: var(--section-font) !important;
+}
+
+/* underline for hovered button */
+.label{
+  position: relative;
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  text-align: right;
+  min-height: min(50px, 3vh);
+}        
+
+.label::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  background : var(--theme-color);
+  left: 0;
+  height: 5px;
+  bottom: -7px;
+  transition: all .2s;
+  opacity: 1;
+}
+
+.label::after {
+  content: "☞";
+  margin-right: 15px; 
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateX(10px);
+  font-family: var(--body-font);
+  display: inline-block;
+}
+
+.label:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Dark mode specific menubar behavior: show underline, hide manicula */
+body.dark-mode .label:hover::before {
+  width: 100%;
+}
+
+body.dark-mode .label::after {
+  visibility: hidden; /* Mantém o espaço para alinhamento idêntico ao modo Light */
+}
+
+/* indicator of current section */
+.menubar-link.menubar-active { 
+  color: var(--theme-color);
+  font-weight: normal;
+}
+
+/* theme toggle button */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: calc(var(--side-padding) / 2); /* Aligned with side padding */
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2100;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--menubar-color);
+    transition: fill 0.3s;
+}
+
+/* Mobile overrides */
+@media (max-width: 800px) {
+    .header {
+      flex: 1 auto; 
+      height: auto;
+    }
+
+    #menu a, .menubar-link { font-size: var(--menu-font-size-mobile); }
+}

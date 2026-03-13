@@ -5,7 +5,7 @@
 
 /* top container for the fixed header */
 .top-container {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -17,11 +17,12 @@
 /* general page wrapper */
 .page-wrap {
     padding-bottom: 60px;
-    margin-top: 30px;
+    margin-top: 180px; 
 }    
 
 /* main content block */
-.main {                                                   
+.main { 
+  padding-top: 40px;                                                    
   min-height: 52vh;
   box-sizing: border-box; 
   flex-wrap: wrap; 
@@ -62,11 +63,11 @@
     .main{ 
       width: 100%; 
       flex-direction: column; 
-      min-height: 52vh;
+      min-height: 52vh; 
     }  
 
     .page-wrap {
-      margin-top: -10px;
+      margin-top: 90px;
     }
 }
 
@@ -77,7 +78,6 @@
     } 
 
     .home-main {
-      width: 70vw;
-      max-width: 1800px !important;
+      max-width: 1800px;
     }
 }

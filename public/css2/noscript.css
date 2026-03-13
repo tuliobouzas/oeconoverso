@@ -1,0 +1,10 @@
+/* Whole document */
+html { 
+    background-color: var(--light-color);                  /* color for overscrolling above */
+  }
+  
+  
+/* BODY OF THE DOCUMENT */
+body::after {
+    background: var(--light-color);                        /* color for overscrolling below */
+}

@@ -1,0 +1,71 @@
+/* Drop Cap (Primeira letra maiúscula) */
+.drop-cap {
+  font-family: var(--section-font);
+  font-size: 100px;
+  line-height: 0.8;
+  float: left;
+  margin-right: 8px;
+  margin-top: 4px;
+  color: var(--body-color);
+}
+
+/* Base Post Image Style (Victorian) */
+.post-image {
+    filter: sepia(0.2) saturate(0.9) contrast(1.1);
+    border: 2px solid #0a0a0a;
+    padding: 3px;
+    box-sizing: border-box;
+    transition: filter 0.3s ease;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--element-gap);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .post-image {
+    filter: brightness(1.1) saturate(1.2);
+    padding: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+/* Newspaper lines (newspaper header style) */
+.newspaper-line-top {
+  border-top: 2px solid var(--body-color);
+  border-bottom: 1px solid var(--body-color);
+  height: 3px; 
+  margin-bottom: 4px;
+}
+
+.newspaper-line-bottom {
+  border-top: 1px solid var(--body-color);
+  border-bottom: 2px solid var(--body-color);
+  height: 3px; 
+  margin-top: 4px;
+}
+
+/* Global Button Style */
+.read-more-btn {
+    background: var(--bg-color);
+    color: var(--body-color) !important;
+    padding: 8px 20px;
+    border: 2px solid var(--body-color);
+    border-radius: 0;
+    text-decoration: none !important;
+    font-family: var(--title-font);
+    font-weight: bold;
+    font-size: var(--body-font-size);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 4px 4px 0px var(--theme-color);
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.read-more-btn:hover {
+    background: var(--body-color);
+    color: var(--bg-color) !important;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--theme-color);
+}
