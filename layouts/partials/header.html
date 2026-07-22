@@ -4,7 +4,9 @@
         {{ partial "menubar.html" . }}
 
         <div class="title">
-            <img src="{{ "img/oeconoverso.svg" | absURL }}" alt="O Econoverso" class="title-logo">
+            <a href="{{ site.Home.Permalink }}" aria-label="O Econoverso — Primeira página">
+                <img src="{{ "img/oeconoverso.svg" | absURL }}" alt="O Econoverso" class="title-logo">
+            </a>
         </div>
     </div>
 

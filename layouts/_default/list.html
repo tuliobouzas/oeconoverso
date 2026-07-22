@@ -25,7 +25,7 @@
                 </h2>
                 
                 {{ if .Params.image }}
-                <a href="{{ .RelPermalink }}">
+                <a href="{{ .RelPermalink }}" class="post-frame">
                     <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
                 </a>
                 {{ end }}

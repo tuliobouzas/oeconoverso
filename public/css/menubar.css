@@ -28,6 +28,11 @@
   transition: all 0.25s;
 }
 
+body:not(.dark-mode) .burger,
+body:not(.dark-mode) .burger span {
+  transition: all 1.05s;
+}
+
 /* sidebar drawer */
 #my-links {
   display: flex;                                        /* display flex so it can animate    */ 
@@ -43,7 +48,35 @@
   z-index: 2050;
   transform: translateX(-100%);                         /* Start hidden to the left */
   transition: transform 0.3s ease-in-out, background 0.3s;
-} 
+  font-family: var(--font-sidebar) !important;
+}
+
+body:not(.dark-mode) #my-links {
+  background:
+    linear-gradient(205deg,
+      var(--drawer-bg-color) 0%,
+      var(--drawer-bg-color) 56%,
+      rgba(40, 47, 42, 0) 76%),
+    linear-gradient(to bottom,
+      var(--drawer-bg-color) 0%,
+      var(--drawer-bg-color) 44%,
+      rgba(40, 47, 42, 0.1) 72%,
+      rgba(40, 47, 42, 0) 90%),
+    url('../img/mechanism/factory.webp') no-repeat center bottom -78px / 100% auto,
+    var(--drawer-bg-color) !important;
+}
+
+body:not(.dark-mode) #my-links::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../img/steampunk-texture.avif') no-repeat center / cover;
+  mix-blend-mode: hard-light;
+  opacity: 0.175;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 85%);
+  pointer-events: none;
+}
 
 /* when the checkbox is checked, slide the menu in */
 #menu-toggle:checked ~ #my-links {
@@ -76,13 +109,23 @@
   justify-content: center;
   align-items: center;
   margin-bottom: min(60px, 4vh);
+  transform: translateY(-35%);
+}
+
+.menu-links-container {
+  transform: translateY(-35%);
 }
 
 .menu-coin {
   width: 90%;
   height: auto;
-  filter: sepia(0.2) saturate(0.7) contrast(1.2) brightness(0.95);
   transition: filter 0.3s ease;
+}
+
+body:not(.dark-mode) .menu-coin {
+  content: url('../img/moeda-steampunk.webp');
+  filter: hue-rotate(-10deg) saturate(1.1) brightness(0.9) contrast(1.03)
+          drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
 }
 
 body.dark-mode .menu-coin {
@@ -94,19 +137,16 @@ body.dark-mode .menu-coin {
   text-decoration: none;
   text-align: right;
   color: var(--drawer-link-color);
-  font-family: var(--section-font) !important;
+  font-family: var(--font-sidebar) !important;
   font-size: 40px;
+  line-height: 48px; /* fixo em px: mesma altura de linha nos dois modos, independente da fonte */
   padding: min(15px, 0.6vh) 30px;
   display: block;
   position: relative;
   cursor: pointer;
   transition: color 0.3s;
 }        
-.menubar-link span.label {
-  font-family: var(--section-font) !important;
-}
 
-/* underline for hovered button */
 .label{
   position: relative;
   display: inline-flex;
@@ -114,18 +154,6 @@ body.dark-mode .menu-coin {
   align-items: center;
   text-align: right;
   min-height: min(50px, 3vh);
-}        
-
-.label::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  background : var(--theme-color);
-  left: 0;
-  height: 5px;
-  bottom: -7px;
-  transition: all .2s;
-  opacity: 1;
 }
 
 .label::after {
@@ -143,21 +171,16 @@ body.dark-mode .menu-coin {
   transform: translateX(0);
 }
 
-/* Dark mode specific menubar behavior: show underline, hide manicula */
-body.dark-mode .label:hover::before {
-  width: 100%;
-}
-
+/* Dark mode specific menubar behavior: hide manicula */
 body.dark-mode .label::after {
   visibility: hidden; /* Mantém o espaço para alinhamento idêntico ao modo Light */
 }
 
 /* indicator of current section */
-.menubar-link.menubar-active { 
-  color: var(--theme-color);
+.menubar-link.menubar-active {
+  color: var(--drawer-link-active);
   font-weight: normal;
 }
-
 /* theme toggle button */
 .theme-toggle {
     position: absolute;

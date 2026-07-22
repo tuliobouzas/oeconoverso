@@ -12,7 +12,7 @@
         <div class="summary-wrapper">
             <div class="info">
                 {{ if .Params.image }}
-                <a href="{{ .RelPermalink }}">
+                <a href="{{ .RelPermalink }}" class="post-frame">
                     <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
                 </a>
                 {{ end }}
@@ -35,7 +35,7 @@
             <div class="info">
                 {{ if .Params.image }}
                     <span style="display:none;"></span>
-                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
+                    <span class="post-frame"><img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image"></span>
                 {{ end }}
                 {{ .Content }}
             </div>

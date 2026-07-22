@@ -10,7 +10,7 @@
         <h1 class="{{ if $isSection }}section-title{{ else }}article-title{{ end }}" style="text-align: center; margin-top: 0;">{{ .Title }}</h1>
         
         {{ if and .Params.image (not $isSection) }}
-        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image">
+        <span class="post-frame"><img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="post-image"></span>
         {{ end }}
 
         <div class="content article-content">

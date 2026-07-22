@@ -1,7 +1,7 @@
 /* Home Grid Layout & Manchete Box Container */
 .manchete-box {
     display: grid;
-    grid-template-columns: 4fr 2fr;
+    grid-template-columns: 5fr 2fr;
     gap: 3vw;
     width: calc(100% - var(--side-padding));
     max-width: none;
@@ -15,14 +15,13 @@
 /* Manchete Section inside Box */
 .manchete {
     padding: var(--container-padding);
-    padding-right: 0;
     display: block;
     height: 100%;
     box-sizing: border-box;
 }
 
 .manchete h1 {
-    font-family: 'Archivo Black', sans-serif !important;
+    font-family: var(--font-manchete-gazeta-home) !important;
     font-size: calc(var(--headline-size) * 1.3);
     text-transform: uppercase;
     display: block;
@@ -46,25 +45,32 @@
 }
 
 .manchete h1 a {                                                                                 
-    font-family: 'Archivo Black', sans-serif !important; 
+    font-family: var(--font-manchete-gazeta-home) !important; 
     letter-spacing: -0.05em; 
     color: inherit; 
     text-decoration: none;
 }               
 
-.manchete .post-image {
+.manchete .post-frame {
     float: left;
-    width: 65% !important;
+    width: 65%;
     max-width: 780px;
-    height: auto !important;
     margin-right: 30px;
     margin-bottom: var(--element-gap);
+}
+
+.manchete .post-frame > .post-image {
+    width: 100% !important;
+    height: auto !important;
+    max-width: none;
+    margin: 0 !important;
+    float: none;
     object-fit: cover;
 }
 
 /* Econopédia Box Style */
 .econopedia-box {
-    border: 2px solid var(--body-color);
+    border: 2px solid var(--border-color);
     border-radius: 0;
     padding: var(--container-padding);
     background: transparent;
@@ -83,7 +89,7 @@
 }
 
 .econopedia-box h2 {
-    font-family: var(--econopedia-font) !important;
+    font-family: var(--font-manchete-econopedia-home) !important;
     -webkit-text-stroke: 2px currentColor;
     text-transform: uppercase;
     font-size: clamp(24px, min(4.1vw, calc(100cqi / (var(--title-len) * 0.33))), 80px) !important;
@@ -143,7 +149,7 @@
         gap: 4vw;
     }
 
-    .manchete .post-image {
+    .manchete .post-frame {
         float: none !important;
         width: 100% !important;
         margin-right: 0 !important;
@@ -165,7 +171,7 @@
         min-height: auto;
     }
 
-    .manchete .post-image {
+    .manchete .post-frame {
         width: 100% !important;
         float: none !important;
         margin-right: 0 !important;

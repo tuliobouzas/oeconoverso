@@ -1,11 +1,10 @@
 :root {
     /* Typography */
-    --body-font: 'Libre Baskerville', 'Baskerville', 'Baskerville Old Face', serif;
-    --body-font-size: 18px;
-    --title-font: 'Libre Caslon Text', 'Caslon', 'Adobe Caslon Pro', serif;
-    --manchete-font: 'Ultra', serif;
-    --section-font: 'Manufacturing Consent', serif;
-    --econopedia-font: 'Smythe', cursive;
+    --limelight-font: 'Limelight', cursive;
+    --diplomata-font: 'Diplomata', serif;
+    --chomsky-font: 'Chomsky', serif;
+    --crimson-font: 'Crimson Pro', serif;
+    --bebas-font: 'Bebas Neue', sans-serif;
     --headline-size: 48px;
     --headline-size-mobile: 25px;
     --title-single-size: 70px;
@@ -14,14 +13,42 @@
     /* Colors */
     --body-color: #0a0a0a;
     --bg-color: #f9f2e4;
-    --drawer-bg-color: #333333;
+    --copper: #cf8f67;
+    --drawer-bg-color: #282f2a;
     --drawer-link-color: white;
-    --link-color: rgb(68, 125, 190); 
-    --theme-color: rgb(170, 151, 114);
-    --theme-color-dark: rgb(170, 151, 114);
+    --link-color: rgb(68, 125, 190);
+    --theme-color: var(--copper);
+    --btn-shadow-color: rgba(60, 60, 58, 0.45);
+    --theme-color-dark: var(--copper);
     --light-color: rgba(239,234,222,1);
     --money-color-dark: rgba(89,106,81);
     --menubar-color: rgb(60,58,56);
+
+    /* Semantic Colors */
+    --logo-color: var(--body-color);
+    --manchete-color: var(--body-color);
+    --text-body-color: var(--body-color);
+    --date-color: var(--body-color);
+    --border-color: var(--body-color);
+    --meta-info-color: var(--theme-color-dark);
+    --drawer-link-active: var(--theme-color);
+    --drop-cap-color: var(--body-color);
+    --section-title-color: var(--manchete-color);
+
+    /* Semantic Fonts */
+    --title-font: 'Libre Caslon Text', 'Caslon', 'Adobe Caslon Pro', serif;
+    --manchete-font: 'Ultra', serif;
+    --section-font: 'Manufacturing Consent', serif;
+    --econopedia-font: 'Smythe', cursive;
+    --body-font: 'Libre Baskerville', 'Baskerville', 'Baskerville Old Face', serif;
+    --body-font-size: 18px;
+    --font-manchete-single: var(--manchete-font);
+    --font-manchete-gazeta-home: 'Archivo Black', sans-serif;
+    --font-manchete-econopedia-home: var(--econopedia-font);
+    --font-sidebar: var(--section-font);
+    --font-meta: var(--section-font);
+    --font-body: var(--body-font);
+    --font-drop-cap: var(--section-font);
     
     /* Layout & Sizing */
     --burger-size: 30px;
@@ -37,17 +64,48 @@
 }
 
 body.dark-mode {
-    --section-font: 'Monoton', cursive;
-    --body-color: #e0e0e0;
-    --bg-color: #121212;
-    --drawer-bg-color: #e0e0e0;
-    --drawer-link-color: #121212;
-    --link-color: rgb(110, 168, 230);
-    --theme-color: rgb(111, 146, 135);
-    --theme-color-dark: rgb(164, 178, 161);
-    --menubar-color: #e0e0e0;
+    /* Paleta "Edição Noturna": NYC anos 1920 — azul-marinho/índigo + âmbar,
+       extraída do banner (banner-better.jpg): céu #05142B/#0A2035, nuvens
+       #18344B, ouro das janelas #C89752, glow âmbar #C58A40 */
+    --gold: #e3ba78;
+    --gold-bright: #e8c58d;
+    --gold-dim: rgba(227, 186, 120, 0.45);
+    --amber-glow: rgba(231, 195, 137, 0.35);
+    --petrol: #132a3f;
+    --petrol-deep: #0a1526;
+
+    --body-color: #ddd3b4;
+    --bg-color: #0c1517;
+    --drawer-bg-color: var(--petrol);
+    --drawer-link-color: #6c5f47;
+    --link-color: #e0b167;
+    --theme-color: var(--gold);
+    --theme-color-dark: var(--gold);
+    --btn-shadow-color: var(--theme-color);
+    --menubar-color: var(--gold);
     --svg-filter: invert(1);
-    --icon-filter: invert(99%) sepia(0%) saturate(1141%) hue-rotate(349deg) brightness(114%) contrast(76%);
+    --icon-filter: invert(78%) sepia(32%) saturate(451%) hue-rotate(357deg) brightness(92%) contrast(88%);
+
+    /* Semantic Colors Dark Mode */
+    --logo-color: var(--gold-bright);
+    --manchete-color: var(--gold-bright);
+    --text-body-color: var(--body-color);
+    --date-color: var(--gold);
+    --border-color: var(--gold-dim);
+    --meta-info-color: var(--gold);
+    --drawer-link-active: var(--gold-bright);
+    --drop-cap-color: var(--gold-bright);
+    --section-title-color: var(--gold-bright);
+
+    /* Semantic Fonts Dark Mode */
+    --section-font: var(--diplomata-font);
+    --font-manchete-single: 'Bebas Neue', sans-serif;
+    --font-manchete-gazeta-home: var(--font-manchete-single);
+    --font-manchete-econopedia-home: 'Limelight', cursive;
+    --font-sidebar: var(--limelight-font);
+    --font-meta: var(--section-font);
+    --font-body: 'Crimson Pro', serif;
+    --font-drop-cap: 'Monoton', cursive;
 }
 
 /* Responsive Variable Overrides */

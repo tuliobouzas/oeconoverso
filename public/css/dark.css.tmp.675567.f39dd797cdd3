@@ -1,0 +1,247 @@
+/* ==========================================================================
+   MODO ESCURO — "Edição Noturna"
+   Jornal art déco: Nova York à noite, anos 1920. Azul-petróleo + dourado.
+   Estrutura de jornal preservada; só a identidade visual muda.
+   ========================================================================== */
+
+/* --- Skyline atrás do título --------------------------------------------- */
+body.dark-mode .title {
+    background:
+        linear-gradient(to right, var(--bg-color) 0%, transparent 15%, transparent 85%, var(--bg-color) 100%),
+        linear-gradient(to bottom, rgba(12, 21, 23, 0.5) 0%, rgba(12, 21, 23, 0.1) 50%, rgba(12, 21, 23, 0.75) 92%, var(--bg-color) 100%),
+        url('../img/sky.webp') center top / cover no-repeat;
+}
+
+/* Botões do cabeçalho acesos como o título (mesmo glow do logo),
+   inclusive com a gaveta aberta — o X não muda de cor. */
+body.dark-mode .burger,
+body.dark-mode .theme-toggle {
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5))
+            drop-shadow(0 0 8px rgba(240, 192, 112, 0.6))
+            drop-shadow(0 0 15px rgba(240, 192, 112, 0.4));
+}
+
+body.dark-mode .burger span,
+body.dark-mode #menu-toggle:checked + .burger span {
+    background-color: var(--gold-bright);
+}
+
+body.dark-mode .theme-toggle svg {
+    fill: var(--gold-bright);
+}
+
+/* --- Barra de data → letreiro "Edição Noturna" --------------------------- */
+body.dark-mode .newspaper-date {
+    font-family: var(--bebas-font);
+    font-size: calc(var(--body-font-size) * 0.95);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 2px 0;
+}
+
+body.dark-mode .newspaper-date::before {
+    content: "Edição Noturna \25C6\00A0\00A0 ";
+}
+
+body.dark-mode .newspaper-line-top,
+body.dark-mode .newspaper-line-bottom {
+    box-shadow: 0 0 8px rgba(207, 157, 85, 0.35);
+}
+
+/* --- Molduras art déco nos boxes da primeira página -----------------------
+   IMPORTANTE: nada aqui pode alterar a geometria em relação ao modo claro.
+   O fio da .manchete é box-shadow (não ocupa espaço); a .econopedia-box
+   herda a borda de 2px da regra base (dourada via --border-color). */
+body.dark-mode .manchete,
+body.dark-mode .econopedia-box {
+    position: relative;
+    outline: 1px solid rgba(207, 157, 85, 0.22);
+    outline-offset: 5px;
+    background: linear-gradient(165deg, rgba(20, 38, 62, 0.28), rgba(8, 13, 24, 0.5));
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .manchete {
+    box-shadow: 0 0 0 1px var(--gold-dim), inset 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+/* losango dourado no topo da moldura, como nos letreiros déco */
+body.dark-mode .manchete::before,
+body.dark-mode .econopedia-box::before {
+    content: "\25C6";
+    position: absolute;
+    top: -0.7em;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 14px;
+    background: var(--bg-color);
+    padding: 0 10px;
+    text-shadow: 0 0 8px var(--amber-glow);
+}
+
+/* títulos com brilho de letreiro */
+body.dark-mode .manchete h1,
+body.dark-mode .econopedia-box h2,
+body.dark-mode .article-title,
+body.dark-mode .section-title {
+    text-shadow: 0 0 16px rgba(240, 192, 112, 0.3);
+}
+
+/* Diplomata é muito maior que a Manufacturing Consent no mesmo px;
+   reduzimos para igualar o tamanho aparente ao modo claro. O line-height
+   fica fixo em px (igual nos dois modos) para o fluxo vertical não mudar. */
+body.dark-mode .manchete-meta {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+body.dark-mode .section-title,
+body.dark-mode .section-title a {
+    font-size: 56px;
+    line-height: 110px; /* = 100px × 1.1 do modo claro */
+}
+
+/* Limelight é muito maior que a Manufacturing Consent no mesmo px;
+   o espaçamento das linhas do menu é dado pelo min-height do .label,
+   então mudar só o font-size não altera o layout. */
+body.dark-mode .menubar-link {
+    font-size: 24px;
+}
+
+/* o degradê do resumo acompanha o fundo do box */
+body.dark-mode .summary-gradient {
+    background: linear-gradient(to bottom, transparent 0%, rgba(11, 19, 21, 0.92) 70%, rgba(11, 19, 21, 0.98) 100%);
+}
+
+/* --- Botões "Continuar lendo" --------------------------------------------- */
+body.dark-mode .read-more-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    padding: 9px 21px; /* borda 1px vs 2px do claro: +1px de padding mantém o tamanho externo igual */
+    color: var(--gold) !important;
+    box-shadow: 0 0 12px rgba(207, 157, 85, 0.25), inset 0 0 8px rgba(207, 157, 85, 0.12);
+}
+
+body.dark-mode .read-more-btn:hover {
+    background: var(--gold);
+    color: var(--petrol-deep) !important;
+    transform: none;
+    box-shadow: 0 0 20px rgba(207, 157, 85, 0.55);
+}
+
+/* --- Barra lateral: marquee art déco -------------------------------------- */
+body.dark-mode #my-links {
+    background: linear-gradient(to bottom, var(--petrol) 0%, var(--petrol-deep) 100%) !important;
+    border-right: 1px solid var(--gold-dim);
+    box-shadow: 2px 0 24px rgba(0, 0, 0, 0.8), inset -14px 0 24px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .menubar-link:hover .label {
+    color: var(--gold-bright);
+    text-shadow: 0 0 10px rgba(245, 180, 100, 0.6), 0 0 22px rgba(245, 180, 100, 0.4);
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+body.dark-mode .menubar-link.menubar-active .label {
+    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    /* 4 piscadas (teto) */
+    @keyframes neon-warmup-4 {
+        0%   { opacity: 0.35; text-shadow: none; }
+        7%   { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        10%  { opacity: 0.35; text-shadow: none; }
+        17%  { opacity: 1;    text-shadow: 0 0 8px rgba(245, 180, 100, 0.5); }
+        21%  { opacity: 0.45; text-shadow: none; }
+        38%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        43%  { opacity: 0.55; text-shadow: none; }
+        54%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        100% { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+    }
+    /* 3 piscadas */
+    @keyframes neon-warmup-3 {
+        0%   { opacity: 0.35; text-shadow: none; }
+        10%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        16%  { opacity: 0.4;  text-shadow: none; }
+        34%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        42%  { opacity: 0.55; text-shadow: none; }
+        60%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        100% { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+    }
+    /* 2 piscadas */
+    @keyframes neon-warmup-2 {
+        0%   { opacity: 0.35; text-shadow: none; }
+        14%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        24%  { opacity: 0.45; text-shadow: none; }
+        50%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        100% { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+    }
+    /* 1 piscada */
+    @keyframes neon-warmup-1 {
+        0%   { opacity: 0.4;  text-shadow: none; }
+        25%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        32%  { opacity: 0.6;  text-shadow: none; }
+        45%  { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+        100% { opacity: 1;    text-shadow: 0 0 10px rgba(245, 180, 100, 0.65), 0 0 24px rgba(245, 180, 100, 0.45); }
+    }
+}
+
+/* moeda do menu com brilho quente */
+body.dark-mode .menu-coin {
+    filter: drop-shadow(0 0 14px rgba(212, 169, 78, 0.35));
+}
+
+/* --- Imagens de posts: tom noturno ----------------------------------------
+   Sem linha visível; padding de 5px = os 5px do claro (2px borda + 3px
+   padding), para o espaçamento ser idêntico nos dois modos. */
+body.dark-mode .post-image {
+    padding: 0;
+    border: 12px solid transparent;
+    filter: brightness(0.95) saturate(1.1) contrast(1.05);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .post-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    --g: #dab77f;
+    --c1: 36px;
+    --c2: 30px;
+    --o1: 2px;
+    --o2: 8px;
+    --t1: 2.3px;
+    --t2: 1.2px;
+    background-repeat: no-repeat;
+    background-image:
+        linear-gradient(var(--g), var(--g)), linear-gradient(var(--g), var(--g)),
+        linear-gradient(var(--g), var(--g)), linear-gradient(var(--g), var(--g)),
+        linear-gradient(var(--g), var(--g)), linear-gradient(var(--g), var(--g)),
+        linear-gradient(var(--g), var(--g)), linear-gradient(var(--g), var(--g));
+    background-position:
+        left var(--c1) top var(--o1),    left var(--c2) top var(--o2),
+        left var(--c1) bottom var(--o1), left var(--c2) bottom var(--o2),
+        left var(--o1) top var(--c1),    left var(--o2) top var(--c2),
+        right var(--o1) top var(--c1),   right var(--o2) top var(--c2);
+    background-size:
+        calc(100% - 2*var(--c1)) var(--t1), calc(100% - 2*var(--c2)) var(--t2),
+        calc(100% - 2*var(--c1)) var(--t1), calc(100% - 2*var(--c2)) var(--t2),
+        var(--t1) calc(100% - 2*var(--c1)), var(--t2) calc(100% - 2*var(--c2)),
+        var(--t1) calc(100% - 2*var(--c1)), var(--t2) calc(100% - 2*var(--c2));
+}
+
+body.dark-mode .post-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    border: 40px solid transparent;
+    border-image: url('../img/corners.svg') 768 / 40px stretch;
+}
+

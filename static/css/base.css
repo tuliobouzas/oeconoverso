@@ -1,9 +1,6 @@
 /** GLOBAL THEME & TYPOGRAPHY **/
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Ultra&display=swap');
-@import url('https://fonts.cdnfonts.com/css/duvall');
-@import url('https://fonts.cdnfonts.com/css/figuera-variable');
-@import url('https://fonts.cdnfonts.com/css/augusta');
 
 @font-face {
     font-family: 'Chomsky';
@@ -18,9 +15,13 @@ html {
   background-color: var(--menubar-color);
 }
 
+/* Fundo do overscroll (área além dos limites da rolagem) em cada modo */
+html { background: #f9f2e4; }
+html:has(body.dark-mode) { background: #0c1517; }
+
 /* BODY OF THE DOCUMENT */
 body { 
-  font-family: var(--body-font); 
+  font-family: var(--font-body); 
   font-size: var(--body-font-size);          
   letter-spacing: 0.5px; 
   margin: 0; 
@@ -28,20 +29,24 @@ body {
   min-height: 100vh;
   display: flex; 
   flex-direction: column;
-  background: var(--bg-color);
-  color: var(--body-color);
+  background-color: var(--bg-color);
+  background-image: linear-gradient(rgba(249, 242, 228, 0.5), rgba(249, 242, 228, 0.5)), url('../img/paper.avif');
+  background-size: cover;
+  background-attachment: fixed;
+  background-blend-mode: normal, hard-light;
+  color: var(--text-body-color);
   transition: background 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--title-font);
-  color: var(--body-color);
+  color: var(--manchete-color);
 }
 
 .article-title, .article-title a {
-  font-family: var(--manchete-font) !important;
+  font-family: var(--font-manchete-single) !important;
   font-weight: normal;
-  color: inherit;
+  color: var(--manchete-color);
   text-decoration: none;
 }
 
@@ -53,7 +58,7 @@ article.info h1.article-title {
 
 /* Gazeta List Headlines */
 .gazeta-list-title {
-  font-family: var(--manchete-font) !important;
+  font-family: var(--font-manchete-single) !important;
   font-size: var(--headline-size);
   line-height: 1.1;
   margin-top: 0;
@@ -62,7 +67,7 @@ article.info h1.article-title {
 }
 
 .gazeta-list-title a {
-  color: var(--body-color);
+  color: var(--manchete-color);
   text-decoration: none;
 }
 
@@ -71,15 +76,16 @@ article.info h1.article-title {
   font-size: 100px;
   line-height: 1.1;
   font-weight: normal;
-  color: inherit;
+  color: var(--section-title-color);
   text-decoration: none;
 }
 
 /* title of the page (Logo) */
-.title { 
-  padding-top: var(--header-padding);
-  padding-bottom: var(--header-padding);
-  text-align: center; 
+.title {
+  padding-top: 37px;
+  padding-bottom: 37px;
+  text-align: center;
+  color: var(--logo-color);
 }   
 
 .title-logo {
@@ -90,6 +96,13 @@ article.info h1.article-title {
     transition: filter 0.3s;
 }
 
+body.dark-mode .title-logo {
+    content: url('../img/oeconoverso-gold.svg');
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4))
+            drop-shadow(0 0 8px rgba(227, 186, 120, 0.48))
+            drop-shadow(0 0 15px rgba(227, 186, 120, 0.32));
+}
+
 /* newspaper date bar */
 .newspaper-bar {
   width: calc(100% - var(--side-padding)); 
@@ -98,16 +111,35 @@ article.info h1.article-title {
 }
 
 .newspaper-date {
-  font-family: var(--body-font);
-  color: var(--body-color);
+  font-family: var(--font-body);
+  color: var(--date-color);
   font-size: var(--body-font-size);
-}   
+}
+
+/* "Edição Diurna" no modo claro, em versalete com travessão, à moda dos
+   cabeçalhos vitorianos; restrito ao claro para não vazar estilo no escuro */
+body:not(.dark-mode) .newspaper-date::before {
+  content: "Edição Diurna — ";
+  font-variant: small-caps;
+  letter-spacing: 1px;
+}
 
 /* markdown font */
-.markdown-font { 
-  font-family: var(--body-font);
-  color: var(--body-color); 
-  font-size: var(--body-font-size); 
+.markdown-font {
+  font-family: var(--font-body);
+  color: var(--text-body-color);
+  font-size: var(--body-font-size);
+}
+
+/* Paridade visual entre os modos: normaliza a altura-x do corpo de texto
+   para a do Crimson Pro (fonte do modo escuro, a referência), para o texto
+   ter o mesmo tamanho aparente e fluir igual nos dois modos. */
+p, .markdown-font {
+  font-size-adjust: 0.43;
+}
+
+.drop-cap {
+  font-size-adjust: none;
 }
 
 /* Links */
@@ -117,9 +149,10 @@ a {
 }
 
 .manchete-meta {
-    font-family: var(--section-font) !important;
+    font-family: var(--font-meta) !important;
     font-size: 30px;
-    color: var(--theme-color-dark);
+    line-height: 36px; /* fixo em px: mesma altura de linha nos dois modos, independente da fonte */
+    color: var(--meta-info-color);
     margin-bottom: var(--element-gap);
     letter-spacing: 1px;
     width: 90%;

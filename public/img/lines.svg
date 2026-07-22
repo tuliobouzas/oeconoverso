@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="768" height="60" viewBox="0 0 768 60">
+  <!-- Duas linhas horizontais douradas para a moldura: uma grossa, uma fina.
+       Cor = #dab77f (igual ao corner.svg). Espessuras: 12 (grossa) e 5 (fina). -->
+  <g stroke="#dab77f" fill="none" stroke-linecap="butt">
+    <line x1="0" y1="20" x2="768" y2="20" stroke-width="12"/>
+    <line x1="0" y1="42" x2="768" y2="42" stroke-width="5"/>
+  </g>
+</svg>
