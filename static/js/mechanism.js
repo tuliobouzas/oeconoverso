@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     SPEED_SLIDE: 5,
     STEP_RACK: 10,
     STEP_SLIDE: 15,
-    SCALE_FIT: 2160,
+    SCALE_FIT_H: 1200,
+    SCALE_MIN: 0.6,
     TEETH_GRID: [4, 3],
     DISC_R: 1.0,
     TOOTH_TUCK: 0.25,
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toothH = pitch * CONFIG.TOOTH_H_FACTOR;
   const baseH = MASTER_X * CONFIG.RACK_BASE_FACTOR;
 
-  const scale0 = Math.min(1, window.innerWidth / CONFIG.SCALE_FIT);
+  const scale0 = Math.min(1, Math.max(CONFIG.SCALE_MIN, window.innerHeight / CONFIG.SCALE_FIT_H));
   const OPEN_WIDTH = drawer.offsetWidth || 350;
   const targetEnd = OPEN_WIDTH / scale0;
   const rackTeeth = Math.max(6, Math.ceil((targetEnd - MASTER_X + 3 * pitch) / pitch));
@@ -393,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = state;
     s.width = window.innerWidth;
     s.height = window.innerHeight;
-    s.scale = Math.min(1, s.width / CONFIG.SCALE_FIT);
+    s.scale = Math.min(1, Math.max(CONFIG.SCALE_MIN, s.height / CONFIG.SCALE_FIT_H));
     const gearXBase = (MASTER_X * 1.2) * s.scale;
     const pinionVisibleWidth = (MASTER_X + toothH / 2) * s.scale;
     s.hideOffset = -(gearXBase + pinionVisibleWidth + 50);
